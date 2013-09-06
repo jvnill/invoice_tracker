@@ -1,0 +1,5 @@
+development:
+  adapter: postgresql
+  database: invoice_tracker_development
+  pool: 5
+  timeout: 5000
