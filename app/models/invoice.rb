@@ -15,6 +15,10 @@ class Invoice < ActiveRecord::Base
   before_validation :set_as_new_invoice
   after_save :generate_html
 
+  def total_amount
+    invoice_items.sum('quantity * unit_amount')
+  end
+
   private
 
   def set_as_new_invoice

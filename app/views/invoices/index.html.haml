@@ -1,1 +1,15 @@
 %table
+  %thead
+    %tr
+      %th Client
+      %th Project
+      %th Date Invoiced
+      %th Total Amount
+
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= invoice.project.client.name
+        %td= invoice.project.name
+        %td= invoice.date.to_s(:default)
+        %td= invoice.total_amount
