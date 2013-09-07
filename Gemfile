@@ -15,6 +15,10 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
 
+group :production do
+  gem 'wkhtmltopdf-heroku'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
