@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   before_create :encrypt_password
 
+  accepts_nested_attributes_for :user_detail
+
   validates :password, presence: true, on: :create
   validates :email, presence: true, length: { within: 6..100, if: :email_present? }, format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i, if: :email_present? }
 

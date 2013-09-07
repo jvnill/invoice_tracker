@@ -22,11 +22,4 @@
       %th Unit Amount
       %th Amount
 
-  %tbody
-    - @invoice.invoice_items.each do |invoice_item|
-      %tr
-        %td= invoice_item.name
-        %td= invoice_item.quantity
-        %td= invoice_item.unit_amount
-        %td= invoice_item.quantity * invoice_item.unit_amount
-
+  %tbody= render partial: 'invoice_item', collection: @invoice.invoice_items

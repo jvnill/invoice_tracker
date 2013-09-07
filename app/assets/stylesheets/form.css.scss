@@ -37,7 +37,7 @@ form {
     text-align: center;
   }
 
-  input.simple {
+  input.simple, textarea.simple {
     background-color: #FFFFFF;
     color: #666;
     font-size: 18px;
@@ -53,6 +53,11 @@ form {
     }
 
     &.first { margin-right: 5px; }
+  }
+
+  textarea.simple {
+    padding: 17px 15px 18px 15px;
+    width: 405px;
   }
 
   .text {

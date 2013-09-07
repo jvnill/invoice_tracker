@@ -21,11 +21,16 @@ class InvoicesController < ApplicationController
   end
 
   def download
+    render pdf: @invoice.id.to_s,
+           disposition: 'attachment',
+           page_width: '900px',
+           margin: { top: 0, bottom: 0, left: 0, right: 0 },
+           show_as_html: params[:preview]
   end
 
   private
 
   def invoice_params
-    params[:invoice] = params.require(:invoice).permit(:project_id, :number, :date, :client_reference_number, :due_date, invoice_items_attributes: [:name, :quantity, :unit_amount, :id])
+    params[:invoice] = params.require(:invoice).permit(:project_id, :number, :date, :client_reference_number, :due_date, :payment_details, invoice_items_attributes: [:name, :quantity, :unit_amount, :id])
   end
 end

@@ -29,6 +29,10 @@
         %label.text.up.left Due Date
         = f.text_field :due_date, class: 'dp simple', value: @invoice.due_date.try(:to_s, :default)
 
+      %div
+        %label.text.up.left Payment Details
+        = f.text_area :payment_details, class: 'simple'
+
     %section
       %div
         %label.text.up.left#invoice_invoice_items
