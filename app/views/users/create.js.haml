@@ -1,0 +1,9 @@
+- if @user.persisted?
+  Turbolinks.visit('#{invoices_path}');
+
+- else
+  CommonFunctions.clearFormErrors();
+
+  - %w[password email].each do |attr|
+    - if @user.errors[attr].present?
+      CommonFunctions.addError('#user_#{attr}', '#{j @user.errors[attr].uniq.to_sentence}')

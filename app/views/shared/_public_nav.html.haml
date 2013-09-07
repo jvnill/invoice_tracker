@@ -1,0 +1,9 @@
+.wrapper
+  .right
+    = link_to 'Signup', new_user_path
+    = link_to 'Login', new_session_path
+    = link_to 'Pricing', pricing_path
+    = link_to 'Tour', tour_path
+    = link_to 'Home', root_path unless params[:action] == 'landing'
+
+  .clearfix

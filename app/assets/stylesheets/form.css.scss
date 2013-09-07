@@ -1,0 +1,66 @@
+form {
+  section {
+    padding-top: 30px;
+
+    &.buttons {
+      text-align: center;
+    }
+
+    &.centered {
+      margin: 0 auto;
+      width: 435px;
+    }
+
+    & > div {
+      clear: both;
+      padding-bottom: 15px;
+      position: relative;
+    }
+  }
+
+  h3 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  input.simple {
+    background-color: #FFFFFF;
+    color: #666;
+    font-size: 18px;
+    padding: 17px 55px 18px 15px;
+    width: 365px;
+    border: 0;
+    border-radius: 3px;
+  }
+
+  .text {
+    width: 435px;
+    display: block;
+    margin: 0 auto;
+
+    &.bottom { padding-top: 10px; }
+    &.up { padding-bottom: 10px; }
+
+    &.right { text-align: right; }
+    &.left { text-align: left; }
+  }
+
+  a.text:hover { color: #555; }
+
+  p.inline-error {
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 0;
+    color: #FF5500;
+    font-size: 0.9em;
+  }
+
+  span.icon-error {
+    position: absolute;
+    right: 0;
+    top: 37px;
+    right: 10px;
+  }
+}

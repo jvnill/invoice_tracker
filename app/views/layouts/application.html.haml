@@ -1,0 +1,24 @@
+!!! 5
+%html
+  %head
+    %title Simple Inventory
+    = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
+    = javascript_include_tag 'application', data: { turbolinks_track: true }
+    = csrf_meta_tags
+
+    %link{ href: 'http://fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet', type: 'text/css' }
+
+  %body
+    #page-container
+      #header= render "shared/#{current_user ? 'private' : 'public'}_nav"
+
+      #content
+        #subnav= render 'nav' rescue nil
+        = yield :subnav
+        = render 'shared/flash_message'
+        = yield
+
+      #footer
+        .wrapper{ class: ('full-width' if current_user) }
+          = link_to 'About', about_path
+          = link_to 'Developer Blog', 'http://jimlabs.heroku.com'

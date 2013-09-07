@@ -1,0 +1,5 @@
+- %w[error success info].each do |msg|
+  - if flash[msg.to_sym].present?
+    .flash{ class: msg }
+      %span.with-text{ class: "icon-#{msg}" }
+      = flash[msg.to_sym]

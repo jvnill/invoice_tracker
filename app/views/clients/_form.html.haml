@@ -1,0 +1,24 @@
+= form_for @client, html: { remote: true } do |f|
+  %section.inputs.centered
+    %h3 New Client
+
+    %div
+      %label.text.up.left Client Name
+      = f.text_field :name, class: 'simple'
+
+    %div
+      %label.text.up.left Contact Person Name
+      = f.text_field :contact_person, class: 'simple'
+
+    %div
+      %label.text.up.left Address
+      = f.text_field :address, class: 'simple'
+
+    %div
+      %label.text.up.left Contact Number
+      = f.text_field :contact_number, class: 'simple'
+
+  %section.buttons.centered
+    = f.submit nil, class: 'flat big'
+    %br
+    %br

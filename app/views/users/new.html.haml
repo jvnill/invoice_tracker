@@ -1,0 +1,16 @@
+= form_for User.new, html: { remote: true } do |f|
+  %section.inputs.centered
+    %h3 User Signup
+
+    %div
+      %label.text.up.left Email
+      = f.text_field :email, class: 'simple'
+
+    %div
+      %label.text.up.left Password
+      = f.password_field :password, class: 'simple'
+
+  %section.buttons.centered
+    = submit_tag 'Sign up', class: 'flat big'
+    %br
+    %br

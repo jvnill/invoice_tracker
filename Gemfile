@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'haml-rails'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
+gem 'jquery-ui-rails'
 gem 'pg'
 gem 'rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -14,4 +18,5 @@ end
 
 group :development, :test do
   gem 'debugger'
+  gem 'quiet_assets'
 end
