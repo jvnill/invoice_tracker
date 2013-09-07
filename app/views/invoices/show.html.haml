@@ -1,0 +1,32 @@
+%dl
+  %dt Client
+  %dd= @invoice.project.client.name
+
+%dl
+  %dt Project
+  %dd= @invoice.project.name
+
+%dl
+  %dt Date Invoiced
+  %dd= @invoice.date.to_s(:default)
+
+%dl
+  %dt Status
+  %dd= @invoice.status.titleize
+
+%table
+  %thead
+    %tr
+      %th Item
+      %th Quantity
+      %th Unit Amount
+      %th Amount
+
+  %tbody
+    - @invoice.invoice_items.each do |invoice_item|
+      %tr
+        %td= invoice_item.name
+        %td= invoice_item.quantity
+        %td= invoice_item.unit_amount
+        %td= invoice_item.quantity * invoice_item.unit_amount
+

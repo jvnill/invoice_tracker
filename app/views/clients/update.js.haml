@@ -1,0 +1,9 @@
+- if @client.errors.empty?
+  Turbolinks.visit('#{client_path(@client)}');
+
+- else
+  CommonFunctions.clearFormErrors();
+
+  - %w[name contact_person address contact_number].each do |attr|
+    - if @client.errors[attr].present?
+      CommonFunctions.addError('#client_#{attr}', '#{j @client.errors[attr].uniq.to_sentence}')

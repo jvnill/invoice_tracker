@@ -1,0 +1,12 @@
+- if @invoice.errors.empty?
+  Turbolinks.visit('#{invoice_path(@invoice)}');
+
+- else
+  CommonFunctions.clearFormErrors();
+
+  - %w[project_id date].each do |attr|
+    - if @invoice.errors[attr].present?
+      CommonFunctions.addError('#invoice_#{attr}', '#{j @invoice.errors[attr].uniq.to_sentence}');
+
+  - if @invoice.errors['invoice_items.name'] || @invoice.errors['invoice_items.unit_amount'] || @invoice.errors['invoice_item.qty']
+    CommonFunctions.addError('#invoice_invoice_items', 'all fields required');

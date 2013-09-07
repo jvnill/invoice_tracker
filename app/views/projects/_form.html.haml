@@ -1,0 +1,22 @@
+#client-dialog
+
+= form_for @project, html: { remote: true } do |f|
+  %section.inputs.centered
+    %h3 #{@project.persisted? ? 'Edit' : 'New'} Project
+
+    %div
+      %label.text.up.left
+        Client
+        = link_to '#', class: 'new-client-dialog', data: { no_turbolink: true } do
+          %span.icon-plus.icon-only.flat{ title: 'New Client' }
+
+      = f.collection_select :client_id, current_user.clients, :id, :name, { include_blank: true }
+
+    %div
+      %label.text.up.left Name
+      = f.text_field :name, class: 'simple'
+
+  %section.buttons.centered
+    = f.submit nil, class: 'flat big'
+    %br
+    %br

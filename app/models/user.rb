@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_one :user_detail
 
   has_many :invoices
-  has_many :projects
   has_many :clients
+  has_many :projects, through: :clients
 
   before_create :encrypt_password
 

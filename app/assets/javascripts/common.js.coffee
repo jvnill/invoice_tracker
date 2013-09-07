@@ -6,6 +6,49 @@ class @CommonFunctions
     $('p.inline-error').remove()
 
   @init: ->
-    $('.dp').datepicker()
+    $('.dp').datepicker
+      dateFormat: 'dd MM yy'
 
 $ -> CommonFunctions.init()
+
+$(document).on 'click', '.new-project-dialog', (event) ->
+  event.preventDefault()
+
+  $('#project-dialog').dialog
+    autoOpen: false
+    width: 500
+    title: 'Create a new project'
+
+  $.ajax
+    url: '/projects/new'
+    type: 'GET'
+    dataType: 'script'
+    complete: ->
+      $('#project-dialog')
+        .dialog('open')
+        .find('h3').remove().end()
+        .find('form').append('<input type="hidden" value="1" name="dialog"></input>')
+
+$(document).on 'click', '.new-client-dialog', (event) ->
+  event.preventDefault()
+
+  $('#client-dialog').dialog
+    autoOpen: false
+    width: 500
+    title: 'Create a new client'
+
+  $.ajax
+    url: '/clients/new'
+    type: 'GET'
+    dataType: 'script'
+    complete: ->
+      $('#client-dialog')
+        .dialog('open')
+        .find('h3').remove().end()
+        .find('form').append('<input type="hidden" value="1" name="dialog"></input>')
+
+$(document).on 'click', '.new-invoice-item-link', (event) ->
+  event.preventDefault()
+
+  idx = Math.max.apply(Math, $('.invoice-item input').map(-> parseInt(this.name.slice(34)))) + 1
+  $('#invoice_invoice_items').parent().append "<div><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]' class='simple'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]' class='simple half first'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]' class='simple half'></div>"

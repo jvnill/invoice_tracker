@@ -1,0 +1,9 @@
+- if @project.errors.empty?
+  Turbolinks.visit('#{project_path(@project)}');
+
+- else
+  CommonFunctions.clearFormErrors();
+
+  - %w[name client_id].each do |attr|
+    - if @project.errors[attr].present?
+      CommonFunctions.addError('#project_#{attr}', '#{j @project.errors[attr].uniq.to_sentence}')

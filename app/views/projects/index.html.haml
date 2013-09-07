@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th Client
+      %th Project Name
+      %th Invoice Count
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= link_to project.name, project
+        %td= link_to project.client.name, project.client
+        %td= project.invoices.count
+

@@ -6,9 +6,12 @@ InvoiceTracker::Application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :destroy_session
 
   resources :users
-  resources :invoices
   resources :projects
   resources :clients
+
+  resources :invoices do
+    get :download, on: :member
+  end
 
   %w[tour pricing about].each do |path|
     get "/#{path}" => "pages##{path}", as: path

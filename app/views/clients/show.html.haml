@@ -1,0 +1,16 @@
+%dl
+  %dt Client Name
+  %dd= @client.name
+
+%dl
+  %dt Contact Person name
+  %dd= @client.contact_person
+
+- if @client.address.present?
+  %dl
+    %dt Address
+    %dd= @client.address
+
+%dl
+  %dt Contact Number
+  %dd= @client.contact_number

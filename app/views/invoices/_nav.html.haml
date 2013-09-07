@@ -1,0 +1,6 @@
+= subnavlink 'plus', 'New Invoice', new_invoice_path
+
+- if @invoice && @invoice.persisted?
+  = subnavlink 'edit', 'Edit Invoice', edit_invoice_path(@invoice)
+  = subnavlink 'pdf', 'Download PDF', download_invoice_path(@invoice)
+.clearfix

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906132705) do
+ActiveRecord::Schema.define(version: 20130907144509) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20130906132705) do
   create_table "invoices", force: true do |t|
     t.string   "number"
     t.date     "date"
-    t.integer  "client_id"
     t.string   "client_reference_number"
     t.integer  "project_id"
     t.date     "due_date"
@@ -47,20 +46,20 @@ ActiveRecord::Schema.define(version: 20130906132705) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "html"
   end
 
-  add_index "invoices", ["client_id"], name: "index_invoices_on_client_id", using: :btree
   add_index "invoices", ["project_id"], name: "index_invoices_on_project_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"
-    t.integer  "user_id"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id", using: :btree
 
   create_table "user_details", force: true do |t|
     t.integer  "user_id"

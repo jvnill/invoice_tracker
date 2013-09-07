@@ -1,6 +1,6 @@
 = form_for @client, html: { remote: true } do |f|
   %section.inputs.centered
-    %h3 New Client
+    %h3 #{@client.persisted? ? 'Edit' : 'New'} Client
 
     %div
       %label.text.up.left Client Name

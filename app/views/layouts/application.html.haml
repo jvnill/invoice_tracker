@@ -13,8 +13,9 @@
       #header= render "shared/#{current_user ? 'private' : 'public'}_nav"
 
       #content
-        #subnav= render 'nav' rescue nil
-        = yield :subnav
+        - if lookup_context.exists?('nav', params[:controller], true)
+          #subnav= render 'nav'
+
         = render 'shared/flash_message'
         = yield
 

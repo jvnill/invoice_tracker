@@ -1,4 +1,17 @@
 form {
+  &.two-column {
+    section.centered {
+      width: 890px;
+      margin: 0 auto;
+
+      section {
+        width: 435px;
+        float: left;
+        &.first { margin-right: 20px; }
+      }
+    }
+  }
+
   section {
     padding-top: 30px;
 
@@ -32,6 +45,14 @@ form {
     width: 365px;
     border: 0;
     border-radius: 3px;
+
+    &.half {
+      margin: 5px 0;
+      width: 145px;
+      float: left;
+    }
+
+    &.first { margin-right: 5px; }
   }
 
   .text {

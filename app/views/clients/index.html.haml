@@ -1,1 +1,14 @@
 %table
+  %thead
+    %tr
+      %th Client Name
+      %th Contact Person
+      %th Invoice Count
+
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= link_to client.name, client
+        %td= client.contact_person
+        %td= client.invoices.count
+
