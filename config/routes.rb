@@ -1,5 +1,5 @@
 InvoiceTracker::Application.routes.draw do
-  root to: 'pages#landing'
+  root to: 'sessions#new'
 
   get '/login' => 'sessions#new', as: :new_session
   post '/login' => 'sessions#create', as: :create_session
@@ -11,9 +11,5 @@ InvoiceTracker::Application.routes.draw do
 
   resources :invoices do
     get :download, on: :member
-  end
-
-  %w[tour pricing about].each do |path|
-    get "/#{path}" => "pages##{path}", as: path
   end
 end

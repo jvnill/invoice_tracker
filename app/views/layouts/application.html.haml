@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Simple Inventory
+    %title Invoice Tracker
     = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
     = javascript_include_tag 'application', data: { turbolinks_track: true }
     = csrf_meta_tags
@@ -21,5 +21,6 @@
 
       #footer
         .wrapper{ class: ('full-width' if current_user) }
-          = link_to 'About', about_path
-          = link_to 'Developer Blog', 'http://jimlabs.heroku.com'
+          %div{ style: 'float:right;' } Site Design by #{link_to 'Nina Rouselle De Polonia-Nill', 'http://behance.net/ninyanernel', target: '_blank'}
+          %div{ style: 'float:left;' } Code by #{link_to 'Jim Ruther Nill', 'http://jimlabs.heroku.com', target: '_blank'}
+          %div{ style: 'text-align:center;' } &copy; Copyright #{Date.today.year}
