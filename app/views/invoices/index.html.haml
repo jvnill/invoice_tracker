@@ -9,7 +9,7 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %td= invoice.project.client.name
+        %td= link_to invoice.project.client.name, invoice
         %td= invoice.project.name
         %td= invoice.date.to_s(:default)
         %td= invoice.total_amount

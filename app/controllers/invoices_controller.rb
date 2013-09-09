@@ -4,6 +4,10 @@ class InvoicesController < ApplicationController
 
   load_and_authorize_resource through: :user
 
+  def index
+    @invoices = @invoices.includes(project: :client)
+  end
+
   def new
     @invoice.invoice_items.build
   end
@@ -31,6 +35,6 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    params[:invoice] = params.require(:invoice).permit(:project_id, :number, :date, :client_reference_number, :due_date, :payment_details, invoice_items_attributes: [:name, :quantity, :unit_amount, :id])
+    params[:invoice] = params.require(:invoice).permit(:project_id, :number, :date, :client_reference_number, :due_date, :payment_details, invoice_items_attributes: [:name, :quantity, :unit_amount, :id, :_destroy])
   end
 end

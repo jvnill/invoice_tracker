@@ -2,8 +2,8 @@ table {
   width: 100%;
   border-collapse: collapse;
 
-  thead tr th {
-    border-bottom: 3px solid #CCC;
-    padding: 5px 0;
-  }
+  thead tr { border-bottom: 5px solid #DDD; }
+  tbody tr { border-bottom: 1px solid #CCC; }
+  td, th { padding: 10px 20px; }
+  th { text-align: left; }
 }

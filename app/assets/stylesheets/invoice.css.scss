@@ -1,0 +1,11 @@
+.invoice-item-container {
+  position: relative;
+  clear: both;
+
+  .delete-invoice-item {
+    top: 0;
+    right: -30px;
+    position: absolute;
+    position: cursor;
+  }
+}

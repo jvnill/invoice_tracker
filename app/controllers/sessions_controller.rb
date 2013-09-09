@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_current_user
-  skip_before_filter :require_current_account
+
+  def new
+    redirect_to invoices_path if current_user
+  end
 
   def create
     if user = User.where(email: params[:email]).first

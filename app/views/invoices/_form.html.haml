@@ -41,10 +41,11 @@
             %span.icon-plus.icon-only.flat{ title: 'New Invoice Item' }
 
         = f.fields_for :invoice_items do |iif|
-          %div
+          .invoice-item-container
             = iif.text_field :name, placeholder: 'Item name', class: 'simple', id: nil
             = iif.text_field :quantity, placeholder: 'Qty', class: 'simple half first', id: nil
             = iif.text_field :unit_amount, placeholder: 'Unit Amt', class: 'simple half', id: nil
+            .icon-error.icon-only.flat.delete-invoice-item{ title: 'Delete Invoice item' }
 
     .clearfix
 

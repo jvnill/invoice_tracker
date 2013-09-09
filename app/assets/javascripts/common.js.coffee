@@ -51,4 +51,16 @@ $(document).on 'click', '.new-invoice-item-link', (event) ->
   event.preventDefault()
 
   idx = Math.max.apply(Math, $('.invoice-item input').map(-> parseInt(this.name.slice(34)))) + 1
-  $('#invoice_invoice_items').parent().append "<div><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]' class='simple'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]' class='simple half first'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]' class='simple half'></div>"
+  $('#invoice_invoice_items').parent().append "<div class='invoice-item-container'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]' class='simple'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]' class='simple half first'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]' class='simple half'><div class='icon-error icon-only flat delete-invoice-item' title='Delete Invoice item'></div></div>"
+
+$(document).on 'click', '.delete-invoice-item', (event) ->
+  event.preventDefault()
+
+  container = $(this).parent()
+
+  if container.next().attr('type') == 'hidden'
+    container.hide()
+    container.append("<input type='hidden' value='1' name='invoice[invoice_items_attributes][#{parseInt(container.next().attr('name').slice(34))}][_destroy]'></input>")
+
+  else
+    container.remove()
