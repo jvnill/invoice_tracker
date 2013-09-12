@@ -1,4 +1,12 @@
-%ul#nav
+%div{ style: 'float:right;' }
+  %ul.main-nav
+    = link_to [:edit, current_user] do
+      %li Profile
+
+    = link_to destroy_session_path, method: :delete do
+      %li Logout
+
+%ul.main-nav
   = link_to clients_path do
     %li Clients
 
@@ -7,8 +15,5 @@
 
   = link_to invoices_path do
     %li Invoices
-
-  = link_to destroy_session_path, method: :delete do
-    %li Logout
 
 .clearfix
