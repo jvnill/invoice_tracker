@@ -9,7 +9,7 @@
 	font-style: normal;
 }
 
-.icon-success, .icon-error, .icon-minus, .icon-plus, .icon-info, .icon-warning, .icon-edit, .icon-cog, .icon-list, .icon-pdf {
+.icon-pdf, .icon-error, .icon-list, .icon-info, .icon-warning, .icon-trash, .icon-cog, .icon-edit, .icon-plus {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -23,18 +23,17 @@
 
   &.icon-only {
     border-radius: 30px;
-    font-size: 10px;
+    font-size: 15px;
     padding: 5px;
   }
 }
 
-.icon-success:before { content: "\e000"; }
+.icon-info:before    { content: "\e000"; }
 .icon-error:before   { content: "\e001"; }
-.icon-minus:before   { content: "\e002"; }
-.icon-plus:before    { content: "\e003"; }
-.icon-info:before    { content: "\e004"; }
-.icon-warning:before { content: "\e005"; }
-.icon-list:before    { content: "\e006"; }
+.icon-list:before    { content: "\e002"; }
+.icon-warning:before { content: "\e003"; }
+.icon-trash:before   { content: "\e004"; }
+.icon-cog:before     { content: "\e005"; }
 .icon-pdf:before     { content: "\e007"; }
 .icon-edit:before    { content: "\e008"; }
-.icon-cog:before     { content: "\e009"; }
+.icon-plus:before    { content: "\f055"; }

@@ -8,7 +8,7 @@ class Invoice < ActiveRecord::Base
 
   accepts_nested_attributes_for :invoice_items, allow_destroy: true
 
-  validates :project_id, :user_id, :date, presence: true
+  validates :project_id, :user_id, :date, :number, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
   validates :invoice_items, presence: true
 

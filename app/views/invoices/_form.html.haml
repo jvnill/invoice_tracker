@@ -9,17 +9,17 @@
         %label.text.up.left
           Project
           = link_to '#', class: 'new-project-dialog', data: { no_turbolink: true } do
-            %span.icon-plus.icon-only.flat{ title: 'New Project' }
+            %span.icon-plus.icon-only{ title: 'New Project' }
 
         = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
 
       %div
-        %label.text.up.left Client Reference Number
-        = f.text_field :client_reference_number, class: 'simple'
-
-      %div
         %label.text.up.left Invoice Number
         = f.text_field :number, class: 'simple'
+
+      %div
+        %label.text.up.left Client Reference Number
+        = f.text_field :client_reference_number, class: 'simple'
 
       %div
         %label.text.up.left Date Invoiced
@@ -38,14 +38,14 @@
         %label.text.up.left#invoice_invoice_items
           Invoice Items
           = link_to '#', class: 'new-invoice-item-link', data: { no_turbolink: true } do
-            %span.icon-plus.icon-only.flat{ title: 'New Invoice Item' }
+            %span.icon-plus.icon-only{ title: 'New Invoice Item' }
 
         = f.fields_for :invoice_items do |iif|
           .invoice-item-container
             = iif.text_field :name, placeholder: 'Item name', class: 'simple', id: nil
             = iif.text_field :quantity, placeholder: 'Qty', class: 'simple half first', id: nil
             = iif.text_field :unit_amount, placeholder: 'Unit Amt', class: 'simple half', id: nil
-            .icon-error.icon-only.flat.delete-invoice-item{ title: 'Delete Invoice item' }
+            .icon-error.icon-only.delete-invoice-item{ title: 'Delete Invoice item' }
 
     .clearfix
 

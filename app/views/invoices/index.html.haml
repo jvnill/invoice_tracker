@@ -5,6 +5,8 @@
       %th Project
       %th Date Invoiced
       %th Total Amount
+      %th Status
+      %th
 
   %tbody
     - @invoices.each do |invoice|
@@ -13,3 +15,7 @@
         %td= invoice.project.name
         %td= invoice.date.to_s(:default)
         %td= invoice.total_amount
+        %td= invoice.status.titleize
+        %td
+          = link_to '', [:edit, invoice], class: 'icon-edit icon-only'
+          = link_to '', invoice, method: :delete, class: 'icon-trash icon-only'
