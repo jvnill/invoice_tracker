@@ -126,4 +126,9 @@
 
           %tbody= render partial: 'invoice_item', collection: @invoice.invoice_items
 
+          %tfoot
+            %tr
+              %td{ colspan: 3, style: 'text-align:right;' } Total
+              %td= @invoice.total_amount
+
     #footer= simple_format @invoice.payment_details
