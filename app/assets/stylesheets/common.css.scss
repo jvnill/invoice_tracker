@@ -35,7 +35,10 @@ html, body {
   }
 
   #nav {
-    & > li { padding: 0.8em 1em; }
+    & > a {
+      float: left;
+      li { padding: 0.8em 1em; }
+    }
 
     .nav {
       display: none;

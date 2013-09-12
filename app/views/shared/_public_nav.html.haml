@@ -1,8 +1,11 @@
 .wrapper
   %div{ style: 'float:right;' }
     %ul#nav
-      %li= link_to 'Login', new_session_path
-      %li= link_to 'Signup', new_user_path
+      = link_to new_session_path do
+        %li Login
+
+      = link_to new_user_path do
+        %li Signup
 
   %div{ style: 'float:left; padding:0.8em 1em 0.8em 0; color:#FFF;' }
     = link_to 'Invoice Tracker', root_url
