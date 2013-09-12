@@ -11,6 +11,10 @@
   %dd= @invoice.date.to_s(:default)
 
 %dl
+  %dt Invoice Number
+  %dd= @invoice.number
+
+%dl
   %dt Status
   %dd= @invoice.status.titleize
 

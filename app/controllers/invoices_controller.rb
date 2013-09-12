@@ -25,7 +25,7 @@ class InvoicesController < ApplicationController
   end
 
   def download
-    render pdf: @invoice.id.to_s,
+    render pdf: @invoice.number.to_s,
            disposition: 'attachment',
            page_width: '900px',
            margin: { top: 0, bottom: 0, left: 0, right: 0 },
