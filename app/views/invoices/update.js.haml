@@ -4,7 +4,7 @@
 - else
   CommonFunctions.clearFormErrors();
 
-  - %w[project_id date number].each do |attr|
+  - %w[project_id date number page_size currency].each do |attr|
     - if @invoice.errors[attr].present?
       CommonFunctions.addError('#invoice_#{attr}', '#{j @invoice.errors[attr].uniq.to_sentence}');
 

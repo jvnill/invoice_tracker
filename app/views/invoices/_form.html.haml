@@ -22,6 +22,10 @@
         = f.text_field :client_reference_number, class: 'simple'
 
       %div
+        %label.text.up.left Currency
+        = f.text_field :currency, placeholder: '$', class: 'simple'
+
+      %div
         %label.text.up.left Date Invoiced
         = f.text_field :date, class: 'dp simple', value: @invoice.date.try(:to_s, :default)
 
@@ -32,6 +36,10 @@
       %div
         %label.text.up.left Payment Details
         = f.text_area :payment_details, class: 'simple'
+
+      %div
+        %label.text.up.left PDF Page Size
+        = f.select :page_size, Invoice::PAGE_SIZES
 
     %section
       %div

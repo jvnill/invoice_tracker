@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
   STATUSES = %w[new sent paid void]
+  PAGE_SIZES = %w[A4 Letter]
 
   has_many :invoice_items, dependent: :destroy, inverse_of: :invoice
 
@@ -10,6 +11,8 @@ class Invoice < ActiveRecord::Base
 
   validates :project_id, :user_id, :date, :number, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
+  validates :currency, length: { maximum: 4 }
+  validates :page_size, inclusion: { in: PAGE_SIZES }
   validates :invoice_items, presence: true
 
   before_validation :set_as_new_invoice
@@ -17,6 +20,14 @@ class Invoice < ActiveRecord::Base
 
   def total_amount
     invoice_items.sum('quantity * unit_amount')
+  end
+
+  def currency
+    read_attribute(:currency) || '$'
+  end
+
+  def page_size
+    read_attribute(:page_size) || 'Letter'
   end
 
   private
