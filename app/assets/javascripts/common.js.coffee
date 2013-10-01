@@ -64,3 +64,5 @@ $(document).on 'click', '.delete-invoice-item', (event) ->
 
   else
     container.remove()
+
+$(document).on 'page:fetch', -> $('#overlay').show()

@@ -6,6 +6,16 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: image-url('loader.gif') no-repeat 50% 50% #FFF;
+  opacity: 0.5;
+  z-index: 999;
+  display: none;
+}
+
 #page-container {
   position: relative;
 

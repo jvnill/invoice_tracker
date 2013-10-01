@@ -9,6 +9,8 @@
     -#%link{ href: 'http://fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet', type: 'text/css' }
 
   %body
+    #overlay
+
     #page-container
       #header= render "shared/#{current_user ? 'private' : 'public'}_nav"
 
