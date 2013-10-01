@@ -16,6 +16,7 @@ class Invoice < ActiveRecord::Base
   validates :invoice_items, presence: true
 
   before_validation :set_as_new_invoice
+  before_save :update_invoice_items_qty, if: :no_quantity?
   after_save :generate_html
 
   def total_amount
@@ -34,6 +35,10 @@ class Invoice < ActiveRecord::Base
 
   def set_as_new_invoice
     self.status ||= 'new'
+  end
+
+  def update_invoice_items_qty
+    invoice_items.each { |item| item.quantity = 1 }
   end
 
   def generate_html

@@ -22,11 +22,16 @@
   %thead
     %tr
       %th Item
-      %th Quantity
-      %th Unit Amount
-      %th Amount (#{@invoice.currency})
 
-  %tbody= render partial: 'invoice_item', collection: @invoice.invoice_items
+      - if @invoice.no_quantity?
+        %th Amount (#{@invoice.currency})
+
+      - else
+        %th Quantity
+        %th Unit Amount
+        %th Amount (#{@invoice.currency})
+
+  %tbody= render partial: 'invoice_item', collection: @invoice.invoice_items, locals: { invoice: @invoice }
 
   %tfoot
     %tr

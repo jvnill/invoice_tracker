@@ -9,6 +9,8 @@ class @CommonFunctions
     $('.dp').datepicker
       dateFormat: 'dd MM yy'
 
+    $('#invoice_no_quantity').trigger('change')
+
 $ -> CommonFunctions.init()
 
 $(document).on 'click', '.new-project-dialog', (event) ->
@@ -51,7 +53,9 @@ $(document).on 'click', '.new-invoice-item-link', (event) ->
   event.preventDefault()
 
   idx = Math.max.apply(Math, $('.invoice-item-container input').map(-> parseInt(this.name.slice(34)))) + 1
-  $('#invoice_invoice_items').parent().append "<div class='invoice-item-container'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]' class='simple'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]' class='simple half first'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]' class='simple half'><div class='icon-error icon-only delete-invoice-item' title='Delete Invoice item'></div></div>"
+  $('#invoice_invoice_items').parent().append "<div class='invoice-item-container'><div class='name'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]' class='simple no-error'></div><div class='quantity'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]' class='simple no-error'></div><div class='amt'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]' class='simple no-error'></div><div class='icon-error icon-only delete-invoice-item' title='Delete Invoice item'></div><div class='clearfix'></div></div>"
+
+  $('#invoice_no_quantity').trigger('change')
 
 $(document).on 'click', '.delete-invoice-item', (event) ->
   event.preventDefault()
@@ -66,3 +70,12 @@ $(document).on 'click', '.delete-invoice-item', (event) ->
     container.remove()
 
 $(document).on 'page:fetch', -> $('#overlay').show()
+
+$(document).on 'change', '#invoice_no_quantity', ->
+  if $(this).prop('checked')
+    $('form .name').addClass('no-qty')
+    $('form .quantity').hide()
+
+  else
+    $('form .name').removeClass('no-qty')
+    $('form .quantity').show()

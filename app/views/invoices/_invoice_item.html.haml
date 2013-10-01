@@ -1,5 +1,10 @@
 %tr
   %td= invoice_item.name
-  %td= invoice_item.quantity
-  %td= invoice_item.unit_amount
-  %td= invoice_item.quantity * invoice_item.unit_amount
+
+  - if invoice.no_quantity?
+    %td= invoice_item.unit_amount
+
+  - else
+    %td= invoice_item.quantity
+    %td= invoice_item.unit_amount
+    %td= invoice_item.quantity * invoice_item.unit_amount

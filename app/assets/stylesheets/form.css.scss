@@ -46,13 +46,7 @@ form {
     border: 0;
     border-radius: 3px;
 
-    &.half {
-      margin: 5px 0;
-      width: 145px;
-      float: left;
-    }
-
-    &.first { margin-right: 5px; }
+    &.no-error { padding: 17px 15px 18px 15px; }
   }
 
   textarea.simple {

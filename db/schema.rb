@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913153831) do
+ActiveRecord::Schema.define(version: 20131001151537) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20130913153831) do
     t.text     "payment_details"
     t.string   "currency"
     t.string   "page_size"
+    t.boolean  "no_quantity",             default: false
   end
 
   add_index "invoices", ["project_id"], name: "index_invoices_on_project_id", using: :btree
