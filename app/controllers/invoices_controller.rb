@@ -33,6 +33,14 @@ class InvoicesController < ApplicationController
            show_as_html: params[:preview]
   end
 
+  def mark_as_sent
+    @invoice.update_column :status, 'sent'
+  end
+
+  def mark_as_paid
+    @invoice.update_column :status, 'paid'
+  end
+
   private
 
   def invoice_params
