@@ -83,4 +83,31 @@ form {
     top: 37px;
     right: 10px;
   }
+
+  select {
+    padding: 17px;
+    background: #FFF;
+    border: 0;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .select-container {
+    position: relative;
+
+    &:after {
+      background: #FFF;
+      content: "\e002";
+      font-family: icomoon;
+      padding: 17px 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 35px;
+    }
+  }
 }

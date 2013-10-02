@@ -11,7 +11,8 @@
           = link_to '#', class: 'new-project-dialog', data: { no_turbolink: true } do
             %span.icon-plus.icon-only{ title: 'New Project' }
 
-        = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
+        .select-container
+          = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
 
       %div
         %label.text.up.left Invoice Number
@@ -28,7 +29,7 @@
     %section
       %div
         %label.text.up.left PDF Page Size
-        = f.select :page_size, Invoice::PAGE_SIZES
+        .select-container= f.select :page_size, Invoice::PAGE_SIZES
 
       %div
         %label.text.up.left Date Invoiced
