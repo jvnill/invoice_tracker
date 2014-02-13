@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   load_and_authorize_resource through: :user
 
   def index
-    @invoices = @invoices.includes(project: :client)
+    @invoices = @invoices.includes(project: :client).order('id DESC')
   end
 
   def new
