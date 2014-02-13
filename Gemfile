@@ -24,6 +24,6 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'pry'
   gem 'quiet_assets'
 end
