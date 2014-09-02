@@ -1,2 +1,2 @@
-invoice_tracker
+Invoice Tracker
 ===============
