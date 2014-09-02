@@ -21,6 +21,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'spring'
+end
+
 group :development, :test do
   gem 'pry'
   gem 'quiet_assets'
