@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'foundation-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
