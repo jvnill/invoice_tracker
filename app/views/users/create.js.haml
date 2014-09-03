@@ -1,8 +1,8 @@
 - if @user.persisted?
-  Turbolinks.visit('#{invoices_path}');
+  window.location = '#{invoices_path}'
 
 - else
-  CommonFunctions.clearFormErrors();
+  CommonFunctions.clearFormErrors()
 
   - %w[password email].each do |attr|
     - if @user.errors[attr].present?

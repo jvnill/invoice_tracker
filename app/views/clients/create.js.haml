@@ -4,7 +4,7 @@
     $('#project_client_id').replaceWith('#{j collection_select(:project, :client_id, current_user.clients, :id, :name, { include_blank: true, selected: @client.id })}');
 
   - else
-    Turbolinks.visit('#{client_path(@client)}');
+    window.location = '#{client_path(@client)}'
 
 - else
   CommonFunctions.clearFormErrors();

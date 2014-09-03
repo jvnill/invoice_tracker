@@ -1,5 +1,5 @@
 - if @project.errors.empty?
-  Turbolinks.visit('#{project_path(@project)}');
+  window.location = '#{project_path(@project)}'
 
 - else
   CommonFunctions.clearFormErrors();

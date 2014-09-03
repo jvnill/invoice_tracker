@@ -1,5 +1,5 @@
 - if @invoice.persisted?
-  Turbolinks.visit('#{invoice_path(@invoice)}');
+  window.location = '#{invoice_path(@invoice)}'
 
 - else
   CommonFunctions.clearFormErrors();

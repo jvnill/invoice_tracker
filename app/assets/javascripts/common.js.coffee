@@ -69,8 +69,6 @@ $(document).on 'click', '.delete-invoice-item', (event) ->
   else
     container.remove()
 
-$(document).on 'page:fetch', -> $('#overlay').show()
-
 $(document).on 'change', '#invoice_no_quantity', ->
   if $(this).prop('checked')
     $('form .name').addClass('no-qty')

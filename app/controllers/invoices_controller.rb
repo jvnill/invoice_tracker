@@ -22,6 +22,7 @@ class InvoicesController < ApplicationController
 
   def destroy
     @invoice.destroy
+    redirect_to invoices_path
   end
 
   def download
