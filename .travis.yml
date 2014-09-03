@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.1.2
+cache:
+  bundler: true
+addons:
+  code_climate:
+    repo_token: df1b34288c536d7ada9acc05c33afd1daf10c8f665357073dc4fdee7b6c81331
+script:
+  - bundle exec rspec
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database invoice_tracker_test;' -U postgres
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+after_script:
+  - cat lcov.info | codeclimate

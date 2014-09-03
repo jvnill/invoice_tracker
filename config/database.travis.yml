@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: invoice_tracker_test
+  username: postgres
