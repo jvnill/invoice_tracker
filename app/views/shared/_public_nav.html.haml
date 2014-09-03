@@ -1,12 +1,17 @@
-.wrapper
-  %div{ style: 'float:right;' }
-    %ul.main-nav
-      = link_to new_session_path do
-        %li Login
+.contain-to-grid
+  %nav.top-bar.fixed{ role: 'navigation', data: { topbar: true } }
+    %ul.title-area
+      %li.name
+        %h1
+          = link_to root_url do
+            %strong> S
+            imple
+            %strong> I
+            nvoice
+            %strong> T
+            racker
 
-      = link_to new_user_path do
-        %li Signup
-
-  %div{ style: 'float:left; padding:0.8em 1em 0.8em 0; color:#FFF;' }
-    = link_to 'Invoice Tracker', root_url
-  .clearfix
+    %section.top-bar-section
+      %ul.right
+        %li= link_to 'Login', new_session_path
+        %li= link_to 'Signup', new_user_path

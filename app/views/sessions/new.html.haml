@@ -1,15 +1,19 @@
-.wrapper
-  = form_tag create_session_path do
-    %section.inputs.centered
-      %h3 Simple and Free Invoice Tracker
+%h1.lead Simple Invoice Tracker
 
-      %div
+= form_tag create_session_path do
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Email
         = text_field_tag :email, params[:email], placeholder: 'john.doe@example.com', class: 'simple'
 
-      %div
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Password
+        .right= link_to 'Forgot Password'
         = password_field_tag :password, '', placeholder: 'Password', class: 'simple'
-        %br
-        = link_to 'Forgot Password', '#', class: 'text bottom right'
 
-    %section.buttons.centered
-      = submit_tag 'Login', class: 'flat big'
+  .row
+    .small-12.medium-9.large-6.column.small-centered.text-center
+      = submit_tag 'Login', class: 'button'

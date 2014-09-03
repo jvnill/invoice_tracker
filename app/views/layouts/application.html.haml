@@ -1,17 +1,18 @@
 !!! 5
 %html
   %head
-    %title Invoice Tracker
-    = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
-    = javascript_include_tag 'application', data: { turbolinks_track: true }
+    %title Simple Invoice Tracker
+
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Roboto:400,100'
+
+    = javascript_include_tag 'vendor/modernizr'
+    = javascript_include_tag 'application'
+
     = csrf_meta_tags
 
-    -#%link{ href: 'http://fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet', type: 'text/css' }
-
   %body
-    #overlay
-
-    #page-container
+    #wrapper
       #header= render "shared/#{current_user ? 'private' : 'public'}_nav"
 
       #content
@@ -21,7 +22,7 @@
         = render 'shared/flash_message'
         = yield
 
-      #footer
-        .wrapper{ class: ('full-width' if current_user) }
-          %div{ style: 'text-align:center;' }
-            Code by #{link_to 'Jim Ruther Nill', 'http://jimlabs.heroku.com', target: '_blank'} &copy; #{Date.today.year}
+      .push
+
+    #footer
+      Code by #{link_to 'Jim Ruther Nill', 'http://jimlabs.herokuapp.com', target: '_blank'} &copy; #{Date.today.year}
