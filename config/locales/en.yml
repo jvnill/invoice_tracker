@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+
+  sessions:
+    login_error: 'There were issues with your email and password'
+
+  users:
+    update_success: 'Details saved successfully!'

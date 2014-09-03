@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update_attributes(user_params)
-      flash[:notice] = 'Details saved successfully!'
+      flash[:notice] = I18n.t('users.update_success')
     end
   end
 
