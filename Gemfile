@@ -2,6 +2,7 @@ ruby '2.1.2'
 
 source 'https://rubygems.org'
 
+gem 'bcrypt', '~> 3.1.7'
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'foundation-rails'
