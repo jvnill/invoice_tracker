@@ -5,7 +5,7 @@ InvoiceTracker::Application.routes.draw do
   post '/login' => 'sessions#create', as: :create_session
   delete '/logout' => 'sessions#destroy', as: :destroy_session
 
-  resources :users
+  resources :users, only: %i[new create edit update]
   resources :projects
   resources :clients
 

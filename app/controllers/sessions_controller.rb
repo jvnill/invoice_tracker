@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_current_user
+  skip_before_action :require_current_user
 
   def new
     redirect_to invoices_path if current_user
   end
 
   def create
-    if user = User.where(email: params[:email]).first
-      if user.valid_password?(params[:password])
+    if user = User.find_by(email: params[:email])
+      if user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to invoices_path
         return
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :user_id
+    reset_session
     redirect_to root_path
   end
 end

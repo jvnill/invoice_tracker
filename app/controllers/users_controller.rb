@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_current_user, only: [:new, :create]
+  skip_before_action :require_current_user, only: [:new, :create]
 
   def create
     @user = User.new(user_params)
