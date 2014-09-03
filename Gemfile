@@ -26,6 +26,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'quiet_assets'
+  gem 'rspec-rails'
 end
