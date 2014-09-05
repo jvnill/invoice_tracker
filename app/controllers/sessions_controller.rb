@@ -6,16 +6,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.find_by(email: params[:email])
-      if user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to invoices_path
-        return
-      end
-    end
+    user = User.find_by(email: params[:email])
 
-    flash.now[:error] = I18n.t('sessions.login_error')
-    render :new
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to invoices_path
+    else
+      flash.now[:error] = I18n.t('sessions.login_error')
+      render :new
+    end
   end
 
   def destroy
