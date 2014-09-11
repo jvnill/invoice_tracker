@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
-  before_filter :set_user_as_current_user
-  before_filter :client_params, only: [:create, :update]
+  before_action :set_user_as_current_user
+  before_action :client_params, only: :create
 
   load_and_authorize_resource through: :user
 

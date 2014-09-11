@@ -1,16 +1,14 @@
 class ProjectsController < ApplicationController
-  before_filter :fetch_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_as_current_user
+  before_action :project_params, only: :create
+
+  load_and_authorize_resource through: :user
 
   def index
-    @projects = current_user.projects.includes(:client)
-  end
-
-  def new
-    @project = Project.new
+    @projects = @projects.includes(:client)
   end
 
   def create
-    @project = Project.new(project_params)
     @project.save
   end
 
@@ -29,13 +27,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:client_id, :name)
-  end
-
-  def fetch_project
-    @project = Project
-      .includes(:client)
-      .where(clients: { user_id: current_user.id })
-      .find(params[:id])
+    params[:project] = params.require(:project).permit(:client_id, :name)
   end
 end

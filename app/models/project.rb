@@ -3,5 +3,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :client
 
+  has_one :user, through: :client
+
   validates :name, :client_id, presence: true
 end
