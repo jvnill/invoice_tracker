@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
   STATUSES = %w[new sent paid void]
-  PAGE_SIZES = %w[A4 Letter]
+  PAGE_SIZES = %w[A4]
 
   has_many :invoice_items, dependent: :destroy, inverse_of: :invoice
 
@@ -17,7 +17,6 @@ class Invoice < ActiveRecord::Base
 
   before_validation :set_as_new_invoice
   before_save :update_invoice_items_qty, if: :no_quantity?
-  after_save :generate_html
 
   def total_amount
     invoice_items.sum('quantity * unit_amount')
@@ -39,8 +38,5 @@ class Invoice < ActiveRecord::Base
 
   def update_invoice_items_qty
     invoice_items.each { |item| item.quantity = 1 }
-  end
-
-  def generate_html
   end
 end
