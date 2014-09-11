@@ -1,8 +1,10 @@
 class InvoicesController < ApplicationController
-  before_filter :set_user_as_current_user
-  before_filter :invoice_params, only: [:create, :update]
+  before_action :set_user_as_current_user
+  before_action :invoice_params, only: [:create, :update]
 
   load_and_authorize_resource through: :user
+
+  before_action :set_invoice_item_quantity, only: %i[create update]
 
   def index
     @invoices = @invoices.includes(project: :client).order('id DESC')
@@ -46,5 +48,11 @@ class InvoicesController < ApplicationController
 
   def invoice_params
     params[:invoice] = params.require(:invoice).permit(:project_id, :number, :date, :client_reference_number, :due_date, :payment_details, :currency, :page_size, :no_quantity, invoice_items_attributes: [:name, :quantity, :unit_amount, :id, :_destroy])
+  end
+
+  def set_invoice_item_quantity
+    return unless @invoice.no_quantity?
+
+    @invoice.invoice_items.each { |invoice_item| invoice_item.quantity = 1 }
   end
 end

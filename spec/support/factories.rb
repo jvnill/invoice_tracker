@@ -13,7 +13,9 @@ FactoryGirl.define do
     sequence(:number) { |n| n }
 
     after(:build) do |invoice|
-      invoice.invoice_items = [build(:invoice_item, invoice: invoice)]
+      if invoice.invoice_items.empty?
+        invoice.invoice_items = [build(:invoice_item, invoice: invoice)]
+      end
     end
   end
 

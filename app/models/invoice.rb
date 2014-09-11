@@ -16,27 +16,22 @@ class Invoice < ActiveRecord::Base
   validates :invoice_items, presence: true
 
   before_validation :set_as_new_invoice
-  before_save :update_invoice_items_qty, if: :no_quantity?
 
   def total_amount
     invoice_items.sum('quantity * unit_amount')
   end
 
   def currency
-    read_attribute(:currency) || '$'
+    read_attribute(:currency).presence || '$'
   end
 
   def page_size
-    read_attribute(:page_size) || 'Letter'
+    read_attribute(:page_size).presence || 'A4'
   end
 
   private
 
   def set_as_new_invoice
     self.status ||= 'new'
-  end
-
-  def update_invoice_items_qty
-    invoice_items.each { |item| item.quantity = 1 }
   end
 end
