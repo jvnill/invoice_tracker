@@ -35,4 +35,8 @@ FactoryGirl.define do
     sequence(:email) { |n| "jim#{n}@example.com" }
     password 'pass'
   end
+
+  factory :user_detail do
+    association :user
+  end
 end
