@@ -26,11 +26,22 @@ describe InvoicesController do
 
   describe 'POST create' do
     context 'valid invoice' do
-      before { xhr :post, :create, invoice: attributes_for(:invoice).merge(project_id: project.id, invoice_items_attributes: [attributes_for(:invoice_item)]) }
+      context 'invoice items has no quantity' do
+        before { xhr :post, :create, invoice: attributes_for(:invoice).merge(no_quantity: true, project_id: project.id, invoice_items_attributes: [{ name: 'II', unit_amount: 10 }]) }
 
-      it { expect(response).to be_success }
-      it { expect(response).to render_template(:create) }
-      it { expect(assigns(:invoice)).to be_persisted }
+        it { expect(response).to be_success }
+        it { expect(response).to render_template(:create) }
+        it { expect(assigns(:invoice)).to be_persisted }
+        it { expect(assigns(:invoice).invoice_items.first.quantity).to eql(1) }
+      end
+
+      context 'invoice items has quantity' do
+        before { xhr :post, :create, invoice: attributes_for(:invoice).merge(project_id: project.id, invoice_items_attributes: [attributes_for(:invoice_item)]) }
+
+        it { expect(response).to be_success }
+        it { expect(response).to render_template(:create) }
+        it { expect(assigns(:invoice)).to be_persisted }
+      end
     end
 
     context 'invalid invoice' do
