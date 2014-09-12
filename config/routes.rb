@@ -12,8 +12,8 @@ InvoiceTracker::Application.routes.draw do
   resources :invoices do
     member do
       get :download
-      put :mark_as_sent
-      put :mark_as_paid
+      patch :mark_as_sent
+      patch :mark_as_paid
     end
   end
 end

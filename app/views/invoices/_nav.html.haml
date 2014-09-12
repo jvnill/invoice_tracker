@@ -6,6 +6,6 @@
   = subnavlink 'edit', 'Edit Invoice', edit_invoice_path(@invoice)
   = subnavlink 'pdf', 'Download PDF', download_invoice_path(@invoice)
   = subnavlink 'pdf', 'Preview PDF', download_invoice_path(@invoice, preview: true)
-  = subnavlink 'cog sent', 'Mark as Sent', mark_as_sent_invoice_path(@invoice), remote: true, method: :put if @invoice.status == 'new'
-  = subnavlink 'cog paid', 'Mark as Paid', mark_as_paid_invoice_path(@invoice), remote: true, method: :put if @invoice.status != 'paid'
+  = subnavlink 'cog sent', 'Mark as Sent', mark_as_sent_invoice_path(@invoice), remote: true, method: :patch if @invoice.status == 'new'
+  = subnavlink 'cog paid', 'Mark as Paid', mark_as_paid_invoice_path(@invoice), remote: true, method: :patch if @invoice.status != 'paid'
 .clearfix
