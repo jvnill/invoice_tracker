@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  before_filter :require_current_user
+  before_action :require_current_user
 
   def current_user
     return if session[:user_id].blank?
@@ -14,12 +14,11 @@ class ApplicationController < ActionController::Base
   private
 
   def require_current_user
-    destroy_session if current_user.blank?
-  end
+    return if current_user
 
-  def destroy_session
-    session.delete :user_id
-    redirect_to new_session_path, error: 'Please use a valid account'
+    reset_session
+    flash[:error] = I18n.t('sessions.logged_in_user_required')
+    redirect_to new_session_path
   end
 
   def set_user_as_current_user

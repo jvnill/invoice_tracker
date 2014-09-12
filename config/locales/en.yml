@@ -24,6 +24,7 @@ en:
 
   sessions:
     login_error: 'There were issues with your email and password'
+    logged_in_user_required: 'A logged in user is required to access that content'
 
   users:
     update_success: 'Details saved successfully!'
