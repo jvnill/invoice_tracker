@@ -103,12 +103,14 @@ describe InvoicesController do
   end
 
   describe 'GET download' do
+    render_views
+
     let!(:invoice) { create(:invoice, project: project, user: user) }
 
-    before { get :download, id: invoice.id }
+    before { get :download, id: invoice.id, preview: true }
 
-    it { expect(response.headers['Content-Type']).to eql('application/pdf') }
-    it { expect(response.headers['Content-Disposition']).to eql("attachment; filename=\"#{invoice.number}.pdf\"") }
+    it { expect(response.body).to match('<body class=\'pdf\'>') }
+    it { expect(response.body).to match("<dt>Invoice No:</dt>\n<dd>#{invoice.number}</dd>") }
   end
 
   describe 'PATCH mark_as_sent' do
