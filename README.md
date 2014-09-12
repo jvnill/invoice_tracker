@@ -5,4 +5,4 @@ Invoice Tracker
 [![Test Coverage](https://codeclimate.com/github/jvnill/invoice_tracker/badges/coverage.svg)](https://codeclimate.com/github/jvnill/invoice_tracker)
 [![Build Status](https://travis-ci.org/jvnill/invoice_tracker.svg?branch=master)](https://travis-ci.org/jvnill/invoice_tracker)
 
-[Hosted on Heroku](http://invoice_tracker.herokuapp.com)
+[Hosted on Heroku](http://invoice-tracker.herokuapp.com)
