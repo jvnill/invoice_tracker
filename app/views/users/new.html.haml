@@ -1,16 +1,18 @@
+%h1.lead Signup! It's FREE!!
+
 = form_for User.new, html: { remote: true } do |f|
-  %section.inputs.centered
-    %h3 User Signup
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Email
+        = f.text_field :email, placeholder: 'john.doe@example.com'
 
-    %div
-      %label.text.up.left Email
-      = f.text_field :email, class: 'simple'
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Password
+        = f.password_field :password, placeholder: 'Password'
 
-    %div
-      %label.text.up.left Password
-      = f.password_field :password, class: 'simple'
-
-  %section.buttons.centered
-    = submit_tag 'Sign up', class: 'flat big'
-    %br
-    %br
+  .row
+    .small-12.medium-9.large-6.column.small-centered.text-center
+      = submit_tag 'Sign up', class: 'button'
