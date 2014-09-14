@@ -1,19 +1,10 @@
-%div{ style: 'float:right;' }
-  %ul.main-nav
-    = link_to [:edit, current_user] do
-      %li Profile
+%nav.top-bar.fixed{ role: 'navigation', data: { topbar: true } }
+  %section.top-bar-section
+    %ul.right
+      = navlink 'Profile', [:edit, current_user], current_page?([:edit, current_user])
+      = navlink 'Logout', destroy_session_path, false, method: :delete
 
-    = link_to destroy_session_path, method: :delete do
-      %li Logout
-
-%ul.main-nav
-  = link_to clients_path do
-    %li Clients
-
-  = link_to projects_path do
-    %li Projects
-
-  = link_to invoices_path do
-    %li Invoices
-
-.clearfix
+    %ul.left
+      = navlink 'Clients',  clients_path,  controller_name == 'clients'
+      = navlink 'Projects', projects_path, controller_name == 'projects'
+      = navlink 'Invoices', invoices_path, controller_name == 'invoices'
