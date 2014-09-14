@@ -27,4 +27,5 @@ en:
     logged_in_user_required: 'A logged in user is required to access that content'
 
   users:
+    create_success: 'Welcome to Simple Invoice Tracker!'
     update_success: 'Details saved successfully!'
