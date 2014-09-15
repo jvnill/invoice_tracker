@@ -1,5 +1,5 @@
 - if @client.errors.empty?
-  $('#dialogs').foundation('reveal', 'close')
+  $('#client-dialog').foundation('reveal', 'close')
   $('##{dom_id(@client)}').replaceWith('#{escape_javascript render('clients/client', client: @client)}')
 
 - else

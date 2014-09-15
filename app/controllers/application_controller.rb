@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
   def set_user_as_current_user
     @user = current_user
   end
+
+  def respond_to_js_only
+    respond_to do |format|
+      format.js
+    end
+  end
 end

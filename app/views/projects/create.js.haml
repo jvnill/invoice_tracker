@@ -1,14 +1,15 @@
 - if @project.persisted?
-  - if params[:dialog]
-    $('#project-dialog').dialog('close');
+  $('#project-dialog').foundation('reveal', 'close')
+
+  - if params[:inline]
     $('#invoice_project_id').replaceWith('#{j collection_select(:invoice, :project_id, current_user.projects, :id, :name, { include_blank: true, selected: @project.id })}');
 
   - else
     window.location = '#{project_path(@project)}'
 
 - else
-  CommonFunctions.clearFormErrors();
+  SIT.Common.clearFormErrors()
 
   - %w[name client_id].each do |attr|
     - if @project.errors[attr].present?
-      CommonFunctions.addError('#project_#{attr}', '#{j @project.errors[attr].uniq.to_sentence}')
+      SIT.Common.addError('#project_#{attr}', '#{escape_javascript @project.errors[attr].uniq.to_sentence}')

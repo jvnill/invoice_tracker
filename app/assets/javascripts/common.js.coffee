@@ -29,24 +29,6 @@ $(document).on 'click', '.new-project-dialog', (event) ->
         .find('h3').remove().end()
         .find('form').append('<input type="hidden" value="1" name="dialog"></input>')
 
-$(document).on 'click', '.new-client-dialog', (event) ->
-  event.preventDefault()
-
-  $('#client-dialog').dialog
-    autoOpen: false
-    width: 500
-    title: 'Create a new client'
-
-  $.ajax
-    url: '/clients/new'
-    type: 'GET'
-    dataType: 'script'
-    complete: ->
-      $('#client-dialog')
-        .dialog('open')
-        .find('h3').remove().end()
-        .find('form').append('<input type="hidden" value="1" name="dialog"></input>')
-
 $(document).on 'click', '.new-invoice-item-link', (event) ->
   event.preventDefault()
 

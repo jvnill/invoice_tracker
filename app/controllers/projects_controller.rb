@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
 
   load_and_authorize_resource through: :user
 
+  before_action :respond_to_js_only, only: [:new, :edit]
+
   def index
     @projects = @projects.includes(:client)
   end
