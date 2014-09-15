@@ -14,7 +14,7 @@ describe ClientsController do
   end
 
   describe 'GET new' do
-    before { get :new }
+    before { xhr :get, :new }
 
     it { expect(response).to be_success }
     it { expect(response).to render_template(:new) }
@@ -52,7 +52,7 @@ describe ClientsController do
   describe 'GET edit' do
     let!(:client) { create(:client, user: user) }
 
-    before { get :edit, id: client.id }
+    before { xhr :get, :edit, id: client.id }
 
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }
