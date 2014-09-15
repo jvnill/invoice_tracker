@@ -1,14 +1,6 @@
-%table
-  %thead
-    %tr
-      %th Client Name
-      %th Contact Person
-      %th Invoice Count
-
-  %tbody
-    - @clients.each do |client|
-      %tr
-        %td= link_to client.name, client
-        %td= client.contact_person
-        %td= client.invoices.count
-
+%ul.small-block-grid-1.medium-block-grid-2.large-block-grid-4
+  - @clients.each do |client|
+    %li
+      = client.name
+      = client.contact_person
+      = client.invoices.count

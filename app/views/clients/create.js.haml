@@ -1,14 +1,15 @@
 - if @client.persisted?
+  $('#dialogs').foundation('reveal', 'close')
+
   - if params[:dialog]
-    $('#client-dialog').dialog('close');
     $('#project_client_id').replaceWith('#{j collection_select(:project, :client_id, current_user.clients, :id, :name, { include_blank: true, selected: @client.id })}');
 
   - else
     window.location = '#{client_path(@client)}'
 
 - else
-  CommonFunctions.clearFormErrors();
+  SIT.Common.clearFormErrors()
 
   - %w[name contact_person address contact_number].each do |attr|
     - if @client.errors[attr].present?
-      CommonFunctions.addError('#client_#{attr}', '#{j @client.errors[attr].uniq.to_sentence}')
+      SIT.Common.addError('#client_#{attr}', '#{escape_javascript @client.errors[attr].uniq.to_sentence}')

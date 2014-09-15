@@ -1,24 +1,32 @@
 = form_for @client, html: { remote: true } do |f|
-  %section.inputs.centered
-    %h3 #{@client.persisted? ? 'Edit' : 'New'} Client
+  .row
+    .small-12.column
+      %h3.subheader #{@client.persisted? ? 'Edit' : 'New'} Client
 
-    %div
-      %label.text.up.left Client Name
-      = f.text_field :name, class: 'simple'
+  .row
+    .small-12.column
+      %label
+        Client Name
+        = f.text_field :name
 
-    %div
-      %label.text.up.left Contact Person Name
-      = f.text_field :contact_person, class: 'simple'
+  .row
+    .small-12.column
+      %label
+        Contact Person Name
+        = f.text_field :contact_person
 
-    %div
-      %label.text.up.left Address
-      = f.text_field :address, class: 'simple'
+  .row
+    .small-12.column
+      %label
+        Address
+        = f.text_field :address
 
-    %div
-      %label.text.up.left Contact Number
-      = f.text_field :contact_number, class: 'simple'
+  .row
+    .small-12.column
+      %label
+        Contact Number
+        = f.text_field :contact_number
 
-  %section.buttons.centered
-    = f.submit nil, class: 'flat big'
-    %br
-    %br
+  .row
+    .small-12.column.small-centered.text-center
+      = f.submit nil, class: 'button'

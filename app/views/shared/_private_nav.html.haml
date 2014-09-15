@@ -10,14 +10,14 @@
 
         %ul.dropdown
           %li= link_to 'Manage Clients', clients_path
-          %li= link_to 'New Client', new_client_path
+          %li= link_to 'New Client', new_client_path, remote: true
 
       %li.has-dropdown
         = link_to 'Projects', projects_path
 
         %ul.dropdown
           %li= link_to 'Manage Projects', projects_path
-          %li= link_to 'New Project', new_project_path
+          %li= link_to 'New Project', new_project_path, remote: true
 
       %li.has-dropdown
         = link_to 'Invoices', invoices_path

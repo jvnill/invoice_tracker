@@ -1,6 +1,6 @@
-class @CommonFunctions
+class @SIT.Common
   @addError: (id, msg) ->
-    $(id).parent().append("<p class='inline-error'><span class='icon-error'></span>#{msg}</p>")
+    $(id).parent().addClass('error').after("<small class='error'>#{msg}</small>")
 
   @clearFormErrors: ->
     $('p.inline-error').remove()
@@ -10,8 +10,6 @@ class @CommonFunctions
       dateFormat: 'dd MM yy'
 
     $('#invoice_no_quantity').trigger('change')
-
-$ -> CommonFunctions.init()
 
 $(document).on 'click', '.new-project-dialog', (event) ->
   event.preventDefault()

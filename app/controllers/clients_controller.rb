@@ -4,8 +4,20 @@ class ClientsController < ApplicationController
 
   load_and_authorize_resource through: :user
 
+  def new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @client.save
+  end
+
+  def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
