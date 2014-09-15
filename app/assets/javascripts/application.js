@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require router_js
+//= require routes
 //= require foundation
 //= require jquery.ui.datepicker
 //= require jquery.ui.dialog
