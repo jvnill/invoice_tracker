@@ -1,7 +1,10 @@
-%dl
-  %dt Client
-  %dd= @project.client.name
+%ul.small-block-grid-8
+  %li
+    %ul.pricing-table
+      %li.title Client
+      %li.bullet-item= link_to @project.client.name, @project.client
 
-%dl
-  %dt Project Name
-  %dd= @project.name
+  %li
+    %ul.pricing-table
+      %li.title Project Name
+      %li.bullet-item= @project.name
