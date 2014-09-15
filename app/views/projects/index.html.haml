@@ -4,11 +4,6 @@
       %th Client
       %th Project Name
       %th Invoice Count
+      %th
 
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= link_to project.name, project
-        %td= link_to project.client.name, project.client
-        %td= project.invoices.count
-
+  %tbody= render @projects
