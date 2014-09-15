@@ -1,16 +1,22 @@
-%dl
-  %dt Client Name
-  %dd= @client.name
+%ul.small-block-grid-8
+  %li
+    %ul.pricing-table
+      %li.title Client Name
+      %li.bullet-item= @client.name
 
-%dl
-  %dt Contact Person name
-  %dd= @client.contact_person
+  %li
+    %ul.pricing-table
+      %li.title Contact Person
+      %li.bullet-item= @client.contact_person
 
-- if @client.address.present?
-  %dl
-    %dt Address
-    %dd= @client.address
+  - if @client.address.present?
+    %li
+      %ul.pricing-table
+        %li.title Address
+        %li.bullet-item= @client.address
 
-%dl
-  %dt Contact Number
-  %dd= @client.contact_number
+  - if @client.contact_number.present?
+    %li
+      %ul.pricing-table
+        %li.title Contact Number
+        %li.bullet-item= @client.contact_number
