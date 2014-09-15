@@ -1,0 +1,6 @@
+%li[client]
+  %ul.pricing-table
+    %li.title= client.name
+    %li.bullet-item= client.contact_person
+    %li.bullet-item= pluralize client.invoices.count, 'invoice'
+    %li.cta-button= link_to 'Edit', [:edit, client], remote: true, class: 'button'

@@ -1,6 +1,2 @@
 %ul.small-block-grid-1.medium-block-grid-2.large-block-grid-4
-  - @clients.each do |client|
-    %li
-      = client.name
-      = client.contact_person
-      = client.invoices.count
+  = render @clients
