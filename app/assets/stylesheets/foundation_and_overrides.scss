@@ -865,11 +865,11 @@ $magellan-padding: 0 !important;
 
 // We use these to control the title styles
 // $price-title-bg: #333;
-// $price-title-padding: rem-calc(15 20);
+$price-title-padding: 0.8em 1em;
 // $price-title-align: center;
 // $price-title-color: #eee;
-// $price-title-weight: $font-weight-normal;
-// $price-title-size: rem-calc(16);
+$price-title-weight: 400;
+$price-title-size: 0.8em;
 // $price-title-font-family: $body-font-family;
 
 // We use these to control the price styles
