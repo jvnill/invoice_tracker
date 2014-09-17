@@ -1,8 +1,12 @@
 %li[client]
   %ul.pricing-table
-    %li.title= client.name
+    %li.title
+      .right= link_to content_tag(:i, '', class: 'fi-x'), client, method: :delete, remote: true, data: { confirm: t('clients.delete_confirmation') }
+      = client.name
+
     %li.bullet-item= client.contact_person
     %li.bullet-item= pluralize client.invoices.count, 'invoice'
+
     %li.cta-button
       = link_to 'View', client, class: 'button'
       = link_to 'Edit', [:edit, client], remote: true, class: 'button'

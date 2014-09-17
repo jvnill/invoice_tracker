@@ -29,3 +29,6 @@ en:
   users:
     create_success: 'Welcome to Simple Invoice Tracker!'
     update_success: 'Details saved successfully!'
+
+  clients:
+    delete_confirmation: 'Are you sure you want to delete this client? All projects and invoices under this client will also be deleted.  This action is not reversible.'

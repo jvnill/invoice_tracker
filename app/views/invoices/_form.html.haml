@@ -7,7 +7,7 @@
     .small-6.column
       %label
         Project
-        = link_to '#', class: 'new-project-dialog', data: { no_turbolink: true } do
+        = link_to new_project_path, remote: true do
           %span.icon-plus.icon-only{ title: 'New Project' }
 
         .select-container
