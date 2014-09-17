@@ -20,3 +20,7 @@
       %ul.pricing-table
         %li.title Contact Number
         %li.bullet-item= @client.contact_number
+
+- if @projects.any?
+  %h4 Projects
+  = render 'projects/projects', table_class: 'hide-client', projects: @projects

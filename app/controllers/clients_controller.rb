@@ -10,6 +10,11 @@ class ClientsController < ApplicationController
     @client.save
   end
 
+  def show
+    @projects = @client.projects
+    @invoices = @client.invoices
+  end
+
   def update
     @client.update_attributes(client_params)
   end

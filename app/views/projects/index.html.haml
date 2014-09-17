@@ -1,9 +1,1 @@
-%table
-  %thead
-    %tr
-      %th Client
-      %th Project Name
-      %th Invoice Count
-      %th
-
-  %tbody= render @projects
+= render 'projects', table_class: nil, projects: @projects

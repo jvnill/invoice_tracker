@@ -1,51 +1,59 @@
-#project-dialog
-
 = form_for @invoice, html: { remote: true, class: 'two-column' } do |f|
-  %section.centered
-    %h3 New Invoice
+  .row
+    .small-12.column
+      %h3.subheader #{@invoice.persisted? ? 'Edit' : 'New'} Invoice
 
-    %section.first
-      %div
-        %label.text.up.left
-          Project
-          = link_to '#', class: 'new-project-dialog', data: { no_turbolink: true } do
-            %span.icon-plus.icon-only{ title: 'New Project' }
+  .row
+    .small-6.column
+      %label
+        Project
+        = link_to '#', class: 'new-project-dialog', data: { no_turbolink: true } do
+          %span.icon-plus.icon-only{ title: 'New Project' }
 
         .select-container
           = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
 
-      %div
-        %label.text.up.left Invoice Number
-        = f.text_field :number, class: 'simple'
+    .small-6.column
+      %label
+        Client Reference Number
+        = f.text_field :client_reference_number
 
-      %div
-        %label.text.up.left Client Reference Number
-        = f.text_field :client_reference_number, class: 'simple'
+  .row
+    .small-6.column
+      %label
+        Invoice Number
+        = f.text_field :number
 
-      %div
-        %label.text.up.left Currency
-        = f.text_field :currency, placeholder: '$', class: 'simple'
+    .small-6.column
+      %label
+        Currency
+        = f.text_field :currency
 
-    %section
-      %div
-        %label.text.up.left PDF Page Size
-        .select-container= f.select :page_size, Invoice::PAGE_SIZES
+  .row
+    .small-6.column
+      %label
+        PDF Page Size
+        = f.select :page_size, Invoice::PAGE_SIZES
 
-      %div
-        %label.text.up.left Date Invoiced
-        = f.text_field :date, class: 'dp simple', value: @invoice.date.try(:to_s, :default)
+    .small-6.column
+      %label
+        Payment Details
+        = f.text_area :payment_details
 
-      %div
-        %label.text.up.left Due Date
-        = f.text_field :due_date, class: 'dp simple', value: @invoice.due_date.try(:to_s, :default)
+  .row
+    .small-6.column
+      %label
+        Date Invoiced
+        = f.text_field :date, class: 'dp', value: @invoice.date.try(:to_s, :default)
 
-      %div
-        %label.text.up.left Payment Details
-        = f.text_area :payment_details, class: 'simple'
+    .small-6.column
+      %label
+        Due Date
+        = f.text_field :due_date, class: 'dp', value: @invoice.due_date.try(:to_s, :default)
 
-  %section.centered
-    %div
-      %label.text.up.left#invoice_invoice_items
+  .row
+    .small-12.column
+      #invoice_invoice_items
         Invoice Items
         = link_to '#', class: 'new-invoice-item-link', data: { no_turbolink: true } do
           %span.icon-plus.icon-only{ title: 'New Invoice Item' }
@@ -62,7 +70,6 @@
           .icon-error.icon-only.delete-invoice-item{ title: 'Delete Invoice item' }
           .clearfix
 
-  %section.buttons.centered
-    = f.submit nil, class: 'flat big'
-    %br
-    %br
+  .row
+    .small-12.column.small-centered.text-center
+      = f.submit nil, class: 'button'

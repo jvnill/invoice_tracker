@@ -1,5 +1,5 @@
 %tr[project]
-  %td= link_to project.name, project
-  %td= link_to project.client.name, project.client
-  %td= project.invoices.count
+  %td.client= link_to project.client.name, project.client
+  %td.name= link_to project.name, project
+  %td.invoice-count= project.invoices.count
   %td= link_to 'Edit', [:edit, project], remote: true
