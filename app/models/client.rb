@@ -5,4 +5,12 @@ class Client < ActiveRecord::Base
   belongs_to :user
 
   validates :name, :contact_person, presence: true
+
+  def to_s
+    name
+  end
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
