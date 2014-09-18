@@ -1,8 +1,8 @@
 - if @project.persisted?
   $('#project-dialog').foundation('reveal', 'close')
 
-  - if params[:inline]
-    $('#invoice_project_id').replaceWith('#{j collection_select(:invoice, :project_id, current_user.projects, :id, :name, { include_blank: true, selected: @project.id })}');
+  - if params[:inline].present?
+    $('#invoice_project_id').replaceWith('#{escape_javascript collection_select(:invoice, :project_id, current_user.projects, :id, :name, { include_blank: true, selected: @project.id })}')
 
   - else
     window.location = '#{project_path(@project)}'

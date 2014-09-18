@@ -1,4 +1,6 @@
 = form_for @project, html: { remote: true } do |f|
+  = hidden_field_tag :inline, params[:inline]
+
   .row
     .small-12.column
       %h3.subheader #{@project.persisted? ? 'Edit' : 'New'} Project
