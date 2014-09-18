@@ -8,7 +8,7 @@
       %label
         Client
         = link_to new_client_path(inline: true), remote: true do
-          %span.icon-plus.icon-only.flat{ title: 'New Client' }
+          %i.fi-plus{ title: 'New Client' }
 
         = f.collection_select :client_id, current_user.clients, :id, :name, { include_blank: true }
 

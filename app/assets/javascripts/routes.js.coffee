@@ -9,6 +9,9 @@ class SITRoute
     @router.route '.*', ->
       new SIT.Common()
 
+    @router.route '/invoices/new', ->
+      new SIT.Invoice()
+
     @router.start()
 
 $ ->

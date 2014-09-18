@@ -4,71 +4,70 @@
       %h3.subheader #{@invoice.persisted? ? 'Edit' : 'New'} Invoice
 
   .row
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Project
-        = link_to new_project_path, remote: true do
-          %span.icon-plus.icon-only{ title: 'New Project' }
+        = link_to new_project_path(inline: true), remote: true do
+          %i.fi-plus{ title: 'New Project' }
 
         .select-container
           = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
 
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Client Reference Number
         = f.text_field :client_reference_number
 
   .row
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Invoice Number
         = f.text_field :number
 
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Currency
         = f.text_field :currency
 
   .row
-    .small-6.column
+    .small-12.medium-6.column
       %label
         PDF Page Size
         = f.select :page_size, Invoice::PAGE_SIZES
 
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Payment Details
         = f.text_area :payment_details
 
   .row
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Date Invoiced
         = f.text_field :date, class: 'dp', value: @invoice.date.try(:to_s, :default)
 
-    .small-6.column
+    .small-12.medium-6.column
       %label
         Due Date
         = f.text_field :due_date, class: 'dp', value: @invoice.due_date.try(:to_s, :default)
 
   .row
     .small-12.column
-      #invoice_invoice_items
+      .left
         Invoice Items
-        = link_to '#', class: 'new-invoice-item-link', data: { no_turbolink: true } do
-          %span.icon-plus.icon-only{ title: 'New Invoice Item' }
+        = link_to '#', class: 'new-invoice-item-link' do
+          %i.fi-plus{ title: 'New Invoice Item' }
 
-        %label.qty-checkbox
-          = f.check_box :no_quantity
-          Don't show quantity
+      .right
+        = f.check_box :no_quantity
+        Don't show quantity
 
-      = f.fields_for :invoice_items do |iif|
-        .invoice-item-container
-          .name= iif.text_field :name, placeholder: 'Item name', class: 'simple no-error', id: nil
-          .quantity= iif.text_field :quantity, placeholder: 'Qty', class: 'simple no-error', id: nil
-          .amt= iif.text_field :unit_amount, placeholder: 'Unit Amt', class: 'simple no-error', id: nil
-          .icon-error.icon-only.delete-invoice-item{ title: 'Delete Invoice item' }
-          .clearfix
+  #invoice_invoice_items
+    = f.fields_for :invoice_items do |iif|
+      .row.invoice-item-container
+        .small-12.medium-6.column.name= iif.text_field :name, placeholder: 'Item name', id: nil
+        .small-4.medium-2.column.quantity= iif.text_field :quantity, placeholder: 'Qty', id: nil
+        .small-8.medium-4.column.amt= iif.text_field :unit_amount, placeholder: 'Unit Amt', id: nil
 
   .row
     .small-12.column.small-centered.text-center
