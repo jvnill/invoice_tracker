@@ -18,6 +18,11 @@ class InvoicesController < ApplicationController
     @invoice.save
   end
 
+  def show
+    @project = @invoice.project
+    @client  = @project.client
+  end
+
   def update
     @invoice.update_attributes(invoice_params)
   end

@@ -61,6 +61,8 @@ describe InvoicesController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
     it { expect(assigns(:invoice)).to eql(invoice) }
+    it { expect(assigns(:project)).to eql(project) }
+    it { expect(assigns(:client)).to eql(client) }
   end
 
   describe 'GET edit' do

@@ -1,22 +1,28 @@
-%dl
-  %dt Client
-  %dd= @invoice.project.client.name
+%ul.small-block-grid-8
+  %li
+    %ul.pricing-table
+      %li.title Client
+      %li.bullet-item= @client
 
-%dl
-  %dt Project
-  %dd= @invoice.project.name
+  %li
+    %ul.pricing-table
+      %li.title Project
+      %li.bullet-item= @project
 
-%dl
-  %dt Date Invoiced
-  %dd= @invoice.date.to_s(:default)
+  %li
+    %ul.pricing-table
+      %li.title Date Invoiced
+      %li.bullet-item= @invoice.date.to_s(:default)
 
-%dl
-  %dt Invoice Number
-  %dd= @invoice.number
+  %li
+    %ul.pricing-table
+      %li.title Invoice Number
+      %li.bullet-item= @invoice.number
 
-%dl.status
-  %dt Status
-  %dd= @invoice.status.titleize
+  %li
+    %ul.pricing-table
+      %li.title Status
+      %li.bullet-item= @invoice.status.titleize
 
 %table
   %thead
