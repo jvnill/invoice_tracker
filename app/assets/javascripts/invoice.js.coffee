@@ -1,6 +1,7 @@
 class SIT.Invoice
   constructor : ->
     @initBindings()
+    @defaultScripts()
 
   initBindings : ->
     $('.new-invoice-item-link').on 'click', (event) ->
@@ -36,3 +37,6 @@ class SIT.Invoice
         $('#invoice_invoice_items .name').addClass('medium-6')
         $('#invoice_invoice_items .amt').addClass('small-8')
         $('form .quantity').show()
+
+  defaultScripts : ->
+    $('#invoice_no_quantity').trigger('change')

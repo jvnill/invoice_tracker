@@ -54,20 +54,23 @@
   .row
     .small-12.column
       .left
-        Invoice Items
-        = link_to '#', class: 'new-invoice-item-link' do
-          %i.fi-plus{ title: 'New Invoice Item' }
+        %label
+          .invoice-items
+            Invoice Items
+            = link_to '', class: 'new-invoice-item-link' do
+              %i.fi-plus{ title: 'New Invoice Item' }
 
       .right
         = f.check_box :no_quantity
         Don't show quantity
 
-  #invoice_invoice_items
-    = f.fields_for :invoice_items do |iif|
-      .row.invoice-item-container
-        .small-12.medium-6.column.name= iif.text_field :name, placeholder: 'Item name', id: nil
-        .small-4.medium-2.column.quantity= iif.text_field :quantity, placeholder: 'Qty', id: nil
-        .small-8.medium-4.column.amt= iif.text_field :unit_amount, placeholder: 'Unit Amt', id: nil
+  .row
+    .small-12.column#invoice_invoice_items
+      = f.fields_for :invoice_items do |iif|
+        .row.invoice-item-container
+          .small-12.medium-6.column.name= iif.text_field :name, placeholder: 'Item name', id: nil
+          .small-4.medium-2.column.quantity= iif.text_field :quantity, placeholder: 'Qty', id: nil
+          .small-8.medium-4.column.amt= iif.text_field :unit_amount, placeholder: 'Unit Amt', id: nil
 
   .row
     .small-12.column.small-centered.text-center
