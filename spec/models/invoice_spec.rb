@@ -18,6 +18,13 @@ describe Invoice do
     it { is_expected.to ensure_length_of(:currency).is_at_most(4) }
   end
 
+  describe '.ordered_by_id' do
+    let!(:invoice1) { create(:invoice) }
+    let!(:invoice2) { create(:invoice) }
+
+    it { expect(Invoice.ordered_by_id.to_a).to eql([invoice2, invoice1]) }
+  end
+
   describe '#total_amount' do
     let!(:invoice) { create(:invoice) }
     let!(:invoice_item) { create(:invoice_item, invoice: invoice, quantity: 1.5, unit_amount: 10) }

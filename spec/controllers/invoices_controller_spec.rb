@@ -7,13 +7,14 @@ describe InvoicesController do
   let!(:project) { create(:project, client: client) }
 
   describe 'GET index' do
-    let!(:invoice) { create(:invoice, user: user, project: project) }
+    let!(:invoice1) { create(:invoice, user: user, project: project) }
+    let!(:invoice2) { create(:invoice, user: user, project: project) }
 
     before { get :index }
 
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
-    it { expect(assigns(:invoices).to_a).to eql([invoice]) }
+    it { expect(assigns(:invoices).to_a).to eql([invoice2, invoice1]) }
   end
 
   describe 'GET new' do

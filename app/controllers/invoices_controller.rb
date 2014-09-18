@@ -7,7 +7,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoice_item_quantity, only: %i[create update]
 
   def index
-    @invoices = @invoices.includes(project: :client).order('id DESC')
+    @invoices = @invoices.includes(project: :client).ordered_by_id
   end
 
   def new

@@ -17,6 +17,8 @@ class Invoice < ActiveRecord::Base
 
   before_validation :set_as_new_invoice
 
+  scope :ordered_by_id, -> { order('invoices.id DESC') }
+
   def total_amount
     invoice_items.sum('quantity * unit_amount')
   end
