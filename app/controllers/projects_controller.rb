@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @invoices = @project.invoices
+    @invoices = @project.invoices.includes(project: :client)
   end
 
   def update

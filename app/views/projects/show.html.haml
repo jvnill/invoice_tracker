@@ -8,3 +8,7 @@
     %ul.pricing-table
       %li.title Project Name
       %li.bullet-item= @project.name
+
+- if @invoices.any?
+  %h4
+  = render 'invoices/invoices', table_class: 'hide-client hide-project', invoices: @invoices

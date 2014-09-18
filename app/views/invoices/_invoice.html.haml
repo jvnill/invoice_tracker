@@ -1,0 +1,11 @@
+%tr
+  %td= link_to invoice.number, invoice
+  %td.client= link_to invoice.project.client, invoice.project.client
+  %td.project= link_to invoice.project, invoice.project
+  %td= invoice.date.to_s(:default)
+  %td= invoice.total_amount
+  %td= invoice.status.titleize
+  %td
+    = link_to content_tag(:i, '', class: 'fi-eye'), invoice, title: 'View'
+    = link_to content_tag(:i, '', class: 'fi-pencil'), [:edit, invoice], title: 'Edit'
+    = link_to content_tag(:i, '', class: 'fi-x'), invoice, method: :delete, remote: true, title: 'Delete'

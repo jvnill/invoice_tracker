@@ -24,3 +24,7 @@
 - if @projects.any?
   %h4 Projects
   = render 'projects/projects', table_class: 'hide-client', projects: @projects
+
+- if @invoices.any?
+  %h4 Invoices
+  = render 'invoices/invoices', table_class: 'hide-client', invoices: @invoices

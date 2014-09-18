@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
 
   def show
     @projects = @client.projects
-    @invoices = @client.invoices
+    @invoices = @client.invoices.includes(project: :client)
   end
 
   def update
