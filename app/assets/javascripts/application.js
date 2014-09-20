@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require router_js
 //= require routes
-//= require foundation
+//= require foundation/foundation
+//= require foundation/foundation.alert
+//= require foundation/foundation.offcanvas
+//= require foundation/foundation.reveal
+//= require foundation/foundation.topbar
 //= require jquery.ui.datepicker
-//= require jquery.ui.dialog
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

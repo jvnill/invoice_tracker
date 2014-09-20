@@ -1336,4 +1336,14 @@ $topbar-link-text-transform: uppercase;
 // $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%);
 // $range-slider-handle-cursor: pointer;
 
-@import 'foundation';
+@import "foundation/components/alert-boxes";
+@import "foundation/components/block-grid";
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+@import "foundation/components/grid";
+@import "foundation/components/offcanvas";
+@import "foundation/components/pricing-tables";
+@import 'foundation/components/reveal';
+@import "foundation/components/tables";
+@import 'foundation/components/top-bar';
+@import "foundation/components/visibility";
