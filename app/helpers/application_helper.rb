@@ -3,8 +3,8 @@ module ApplicationHelper
     content_tag :li, link_to(text, url, link_options), class: ('active' if current_page?(url))
   end
 
-  def project_select(builder, projects)
-    builder.select :project_id, grouped_options_for_select(grouped_project_options(projects)), { include_blank: true }
+  def project_select(projects, selected = nil)
+    select :invoice, :project_id, grouped_options_for_select(grouped_project_options(projects), selected), { include_blank: true }
   end
 
   def grouped_project_options(projects)

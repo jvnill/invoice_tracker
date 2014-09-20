@@ -2,7 +2,7 @@
   $('#project-dialog').foundation('reveal', 'close')
 
   - if params[:inline].present?
-    $('#invoice_project_id').replaceWith('#{escape_javascript collection_select(:invoice, :project_id, current_user.projects, :id, :name, { include_blank: true, selected: @project.id })}')
+    $('#invoice_project_id').replaceWith('#{escape_javascript project_select(current_user.projects, @project.id) }')
 
   - else
     window.location = '#{project_path(@project)}'
