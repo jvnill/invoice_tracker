@@ -8,18 +8,19 @@ class SIT.Invoice
       event.preventDefault()
 
       idx = Math.max.apply(Math, $('.invoice-item-container input').map(-> parseInt(this.name.slice(34)))) + 1
-      $('#invoice_invoice_items').append "<div class='row invoice-item-container'><div class='small-12 medium-6 column name'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]'></div><div class='small-4 medium-2 column quantity'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]'></div><div class='small-8 medium-4 column amt'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]'></input></div></div>"
+      $('#invoice_invoice_items').append "<div class='row invoice-item-container'><div class='small-12 medium-6 column name'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]'></div><div class='small-4 medium-2 column quantity'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]'></div><div class='small-8 medium-4 column amt'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]'></input><div><i class='fi-minus-circle'></i></div></div></div>"
 
       $('#invoice_no_quantity').trigger('change')
 
-    $('#invoice_invoice_items').on 'click', '.fi-x', (event) ->
+    $('#invoice_invoice_items').on 'click', '.fi-minus-circle', (event) ->
       event.preventDefault()
 
-      container = $(this).parent()
+      container = $(this).closest('.invoice-item-container')
 
       if container.next().attr('type') == 'hidden'
-        container.hide()
-        container.append("<input type='hidden' value='1' name='invoice[invoice_items_attributes][#{parseInt(container.next().attr('name').slice(34))}][_destroy]'></input>")
+        container
+          .hide()
+          .append("<input type='hidden' value='1' name='invoice[invoice_items_attributes][#{parseInt(container.next().attr('name').slice(34))}][_destroy]'></input>")
 
       else
         container.remove()

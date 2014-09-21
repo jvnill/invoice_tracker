@@ -12,6 +12,9 @@ class SITRoute
     @router.route '/invoices/new', ->
       new SIT.Invoice()
 
+    @router.route '/invoices/:id/edit', ->
+      new SIT.Invoice()
+
     @router.start()
 
 $ ->
