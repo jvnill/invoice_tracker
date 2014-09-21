@@ -28,4 +28,16 @@ describe ApplicationHelper do
 
     it { expect(helper.grouped_project_options(user.projects)).to eql({ client1.name => [[project1.name, project1.id], [project2.name, project2.id]], client2.name => [[project4.name, project4.id], [project3.name, project3.id]] }) }
   end
+
+  describe '#details_block' do
+    let!(:details) { { foo: 'bar', bar: 'foo', empty: '', nil: nil } }
+
+    before { allow(helper).to receive(:detail_block).twice.and_return(nil) }
+
+    it { expect(helper.details_block(details)).to eql('<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6"><li></li><li></li></ul>') }
+  end
+
+  describe '#detail_block' do
+    it { expect(helper.detail_block('title', 'value')).to eql('<ul class="pricing-table"><li class="title">title</li><li class="bullet-item">value</li></ul>') }
+  end
 end
