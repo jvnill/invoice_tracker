@@ -11,7 +11,7 @@
           %i.fi-plus{ title: 'New Project' }
 
         .select-container
-          = project_select(current_user.projects)
+          = project_select(current_user.projects, @invoice.project_id)
 
     .small-12.medium-6.column
       %label
