@@ -44,3 +44,7 @@
       %th{ colspan: 3, style: 'text-align:right;' } Total
       %th.text-right= number_to_currency @invoice.total_amount, unit: @invoice.currency
 
+.small-text-center.medium-text-right
+  = link_to 'Edit', [:edit, @invoice], class: 'button'
+  = link_to 'Delete', @invoice, method: :delete, class: 'button alert', data: { confirm: t('invoices.delete_confirmation') }
+

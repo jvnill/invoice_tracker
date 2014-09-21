@@ -22,6 +22,12 @@
 en:
   hello: "Hello world"
 
+  clients:
+    delete_confirmation: 'Are you sure you want to delete this client? All projects and invoices under this client will also be deleted.  This action is not reversible.'
+
+  invoices:
+    delete_confirmation: 'Are you sure you want to delete this invoice? This action is irreversible?'
+
   sessions:
     login_error: 'There were issues with your email and password'
     logged_in_user_required: 'A logged in user is required to access that content'
@@ -29,6 +35,3 @@ en:
   users:
     create_success: 'Welcome to Simple Invoice Tracker!'
     update_success: 'Details saved successfully!'
-
-  clients:
-    delete_confirmation: 'Are you sure you want to delete this client? All projects and invoices under this client will also be deleted.  This action is not reversible.'
