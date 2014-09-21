@@ -66,7 +66,7 @@
 
   .row
     .small-12.column#invoice_invoice_items
-      = f.fields_for :invoice_items do |iif|
+      = f.fields_for :invoice_items, f.object.invoice_items.ordered_by_id do |iif|
         .row.invoice-item-container
           .small-12.medium-6.column.name= iif.text_field :name, placeholder: 'Item name', id: nil
           .small-4.medium-2.column.quantity= iif.text_field :quantity, placeholder: 'Qty', id: nil

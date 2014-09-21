@@ -8,5 +8,5 @@
     - if @invoice.errors[attr].present?
       SIT.Common.addError('#invoice_#{attr}', '#{escape_javascript @invoice.errors[attr].uniq.to_sentence}')
 
-  - if (@invoice.errors['invoice_items.name'] || @invoice.errors['invoice_items.unit_amount'] || @invoice.errors['invoice_item.qty']).present?
+  - if @invoice.errors['invoice_items.name'].present? || @invoice.errors['invoice_items.unit_amount'].present? || @invoice.errors['invoice_items.quantity'].present?
     SIT.Common.addError('.invoice-items', 'all fields required')

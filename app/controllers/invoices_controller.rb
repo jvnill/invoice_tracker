@@ -19,8 +19,9 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @project = @invoice.project
-    @client  = @project.client
+    @project       = @invoice.project
+    @client        = @project.client
+    @invoice_items = @invoice.invoice_items.ordered_by_id
   end
 
   def update

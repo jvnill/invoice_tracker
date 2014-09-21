@@ -56,6 +56,7 @@ describe InvoicesController do
 
   describe 'GET show' do
     let!(:invoice) { create(:invoice, project: project, user: user) }
+    let!(:invoice_item) { create(:invoice_item, invoice: invoice) }
 
     before { get :show, id: invoice.id }
 
@@ -64,6 +65,7 @@ describe InvoicesController do
     it { expect(assigns(:invoice)).to eql(invoice) }
     it { expect(assigns(:project)).to eql(project) }
     it { expect(assigns(:client)).to eql(client) }
+    it { expect(assigns(:invoice_items).to_a).to eql([invoice.invoice_items.first, invoice_item]) }
   end
 
   describe 'GET edit' do

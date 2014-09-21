@@ -37,7 +37,7 @@
         %th Unit Amount
         %th.text-right Amount (#{@invoice.currency})
 
-  %tbody= render partial: 'invoice_item', collection: @invoice.invoice_items, locals: { invoice: @invoice }
+  %tbody= render partial: 'invoice_item', collection: @invoice_items, locals: { invoice: @invoice }
 
   %tfoot
     %tr
