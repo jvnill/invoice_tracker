@@ -1,25 +1,4 @@
-%ul.small-block-grid-8
-  %li
-    %ul.pricing-table
-      %li.title Client Name
-      %li.bullet-item= @client.name
-
-  %li
-    %ul.pricing-table
-      %li.title Contact Person
-      %li.bullet-item= @client.contact_person
-
-  - if @client.address.present?
-    %li
-      %ul.pricing-table
-        %li.title Address
-        %li.bullet-item= @client.address
-
-  - if @client.contact_number.present?
-    %li
-      %ul.pricing-table
-        %li.title Contact Number
-        %li.bullet-item= @client.contact_number
+= details_block 'Client Name' => @client, 'Contact Person' => @client.contact_person, 'Address' => @client.address, 'Contact Number' => @client.contact_number
 
 - if @projects.any?
   %h4 Projects

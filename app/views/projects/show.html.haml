@@ -1,13 +1,4 @@
-%ul.small-block-grid-8
-  %li
-    %ul.pricing-table
-      %li.title Client
-      %li.bullet-item= link_to @project.client.name, @project.client
-
-  %li
-    %ul.pricing-table
-      %li.title Project Name
-      %li.bullet-item= @project.name
+= details_block 'Client' => link_to(@project.client.name, @project.client), 'Project Name' => @project
 
 - if @invoices.any?
   %h4

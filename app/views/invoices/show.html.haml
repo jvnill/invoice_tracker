@@ -1,28 +1,4 @@
-%ul.small-block-grid-8
-  %li
-    %ul.pricing-table
-      %li.title Client
-      %li.bullet-item= @client
-
-  %li
-    %ul.pricing-table
-      %li.title Project
-      %li.bullet-item= @project
-
-  %li
-    %ul.pricing-table
-      %li.title Date Invoiced
-      %li.bullet-item= @invoice.date.to_s(:default)
-
-  %li
-    %ul.pricing-table
-      %li.title Invoice Number
-      %li.bullet-item= @invoice.number
-
-  %li
-    %ul.pricing-table
-      %li.title Status
-      %li.bullet-item= @invoice.status.titleize
+= details_block 'Client' => @client, 'Project' => @project, 'Date Invoiced' => @invoice.date.to_s(:default), 'Invoice Number' => @invoice.number, 'Status' => @invoice.status.titleize
 
 %table
   %thead

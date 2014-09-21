@@ -17,4 +17,19 @@ module ApplicationHelper
       hash[project.client_name]  << [project.name, project.id]
     end
   end
+
+  def details_block(details)
+    content_tag(:ul, class: 'small-block-grid-2 medium-block-grid-4 large-block-grid-6') do
+      details.map do |title, value|
+        content_tag(:li, detail_block(title, value)) if value.present?
+      end.join.html_safe
+    end
+  end
+
+  def detail_block(title, value)
+    content_tag(:ul, class: 'pricing-table') do
+      content_tag(:li, title, class: 'title') +
+      content_tag(:li, value, class: 'bullet-item')
+    end
+  end
 end
