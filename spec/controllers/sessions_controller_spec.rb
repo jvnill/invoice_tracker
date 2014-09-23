@@ -22,10 +22,19 @@ describe SessionsController do
     let!(:user) { create(:user, email: 'jim@example.com', password: 'pass') }
 
     context 'successful auth' do
-      before { post :create, email: 'jim@example.com', password: 'pass' }
+      context 'no remember me' do
+        before { post :create, email: 'jim@example.com', password: 'pass' }
 
-      it { expect(response).to redirect_to(invoices_path) }
-      it { expect(session[:user_id]).to eql(user.id) }
+        it { expect(response).to redirect_to(invoices_path) }
+        it { expect(cookies.signed[:auth_token]).to eql(user.auth_token) }
+      end
+
+      context 'with remember me' do
+        before { post :create, email: 'jim@example.com', password: 'pass', remember_me: true }
+
+        it { expect(response).to redirect_to(invoices_path) }
+        it { expect(cookies.signed[:auth_token]).to eql(user.auth_token) }
+      end
     end
 
     context 'unsuccessful auth' do
