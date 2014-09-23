@@ -15,5 +15,11 @@
         = password_field_tag :password, '', placeholder: 'Password'
 
   .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        = check_box_tag :remember_me
+        Remember Me
+
+  .row
     .small-12.medium-9.large-6.column.small-centered.text-center
       = submit_tag 'Login', class: 'button'

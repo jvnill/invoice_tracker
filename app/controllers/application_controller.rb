@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :require_current_user
 
   def current_user
-    return if session[:user_id].blank?
+    return if cookies[:auth_token].blank?
 
-    @current_user ||= User.where(id: session[:user_id]).first
+    @current_user ||= User.find_by(auth_token: cookies.signed[:auth_token])
   end
 
   private
