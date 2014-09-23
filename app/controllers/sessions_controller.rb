@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:auth_token, domain: :all)
+    cookies.delete(:auth_token)
     reset_session
     redirect_to root_path
   end
@@ -28,9 +28,9 @@ class SessionsController < ApplicationController
 
   def login(user)
     if params[:remember_me]
-      cookies.permanent.signed[:auth_token] = { value: user.auth_token, domain: :all }
+      cookies.permanent.signed[:auth_token] = user.auth_token
     else
-      cookies.signed[:auth_token] = { value: user.auth_token, domain: :all }
+      cookies.signed[:auth_token] = user.auth_token
     end
   end
 end
