@@ -1,5 +1,5 @@
 shared_context 'logged in user' do
   let!(:user) { create(:user) }
 
-  before { session[:user_id] = user.id }
+  before { cookies.signed[:auth_token] = user.auth_token }
 end
