@@ -1,4 +1,10 @@
 %nav.top-bar.fixed{ role: 'navigation', data: { topbar: true } }
+  %ul.title-area
+    %li.name
+    %li.toggle-topbar.menu-icon
+      %a{ href: '#' }
+        %span
+
   %section.top-bar-section
     %ul.right
       = navlink 'Profile', [:edit, current_user]
