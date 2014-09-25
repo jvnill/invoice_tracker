@@ -10,9 +10,10 @@ Invoice Tracker
 ## TODO
 
 * Menu in small devices
-* Expose download to PDF link
 * Expose links to update invoice status
 * Add angular part for adding a total in invoice form
 * Allow PDF Layout
 * API
 * Reports
+* Login via 3rd party services
+* Reset password implementation
