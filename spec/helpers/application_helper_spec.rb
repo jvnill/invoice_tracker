@@ -38,6 +38,6 @@ describe ApplicationHelper do
   end
 
   describe '#detail_block' do
-    it { expect(helper.detail_block('title', 'value')).to eql('<ul class="pricing-table"><li class="title">title</li><li class="bullet-item">value</li></ul>') }
+    it { expect(helper.detail_block('Invoice Number', 'value')).to eql('<ul class="pricing-table invoice-number"><li class="title">Invoice Number</li><li class="bullet-item">value</li></ul>') }
   end
 end

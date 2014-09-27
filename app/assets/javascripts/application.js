@@ -20,6 +20,8 @@
 //= require foundation/foundation.reveal
 //= require foundation/foundation.topbar
 //= require jquery.ui.datepicker
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

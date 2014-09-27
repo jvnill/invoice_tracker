@@ -35,3 +35,6 @@ en:
   users:
     create_success: 'Welcome to Simple Invoice Tracker!'
     update_success: 'Details saved successfully!'
+
+  passwords:
+    reset_instructions_sent: 'You will receive an email with instructions on how to reset your password.'

@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def detail_block(title, value)
-    content_tag(:ul, class: 'pricing-table') do
+    content_tag(:ul, class: "pricing-table #{title.parameterize}") do
       content_tag(:li, title, class: 'title') +
       content_tag(:li, value, class: 'bullet-item')
     end

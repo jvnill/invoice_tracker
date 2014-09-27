@@ -8,6 +8,7 @@ InvoiceTracker::Application.routes.draw do
   resources :users, only: %i[new create edit update]
   resources :projects
   resources :clients
+  resources :passwords, only: %i[new create edit update]
 
   resources :invoices do
     member do

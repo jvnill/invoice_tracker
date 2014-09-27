@@ -1,0 +1,12 @@
+%h1.lead Reset Password
+
+= form_tag passwords_path, remote: true do
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Email
+        = text_field_tag :email, params[:email], placeholder: 'john.doe@example.com'
+
+  .row
+    .small-12.medium-9.large-6.column.small-centered.text-center
+      = submit_tag 'Reset Password', class: 'button'
