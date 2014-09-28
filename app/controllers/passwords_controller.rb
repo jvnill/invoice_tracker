@@ -4,6 +4,6 @@ class PasswordsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    PasswordsMailer.reset_instructions(user).deliver if user
+    PasswordReseter.new(user).process if user
   end
 end
