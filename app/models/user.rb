@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :invoices
   has_many :clients
   has_many :projects, through: :clients
+  has_many :user_options
 
   accepts_nested_attributes_for :user_detail
 
