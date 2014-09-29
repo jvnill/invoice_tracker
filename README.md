@@ -9,11 +9,11 @@ Invoice Tracker
 
 ## TODO
 
-* Menu in small devices
+* ~~Menu in small devices~~
+* ~~Reset password implementation~~
 * Expose links to update invoice status
 * Add angular part for adding a total in invoice form
 * Allow PDF Layout
 * API
 * Reports
 * Login via 3rd party services
-* Reset password implementation
