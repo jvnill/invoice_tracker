@@ -36,6 +36,12 @@ FactoryGirl.define do
     password 'pass'
   end
 
+  factory :user_option do
+    association :user
+    name 'password_token'
+    value 'test'
+  end
+
   factory :user_detail do
     association :user
   end
