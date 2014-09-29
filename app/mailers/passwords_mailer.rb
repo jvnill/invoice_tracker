@@ -5,6 +5,6 @@ class PasswordsMailer < ActionMailer::Base
 
     mail to: @user.email,
        from: 'jvnill@gmail.com',
-    subject: 'Reset password instructions for Simple Invoice Tracker'
+    subject: I18n.t('emails.subjects.reset_instructions')
   end
 end
