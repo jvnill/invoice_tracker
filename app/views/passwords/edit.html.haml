@@ -1,0 +1,18 @@
+%h1.lead Reset Password
+
+= form_for :user, url: password_path(params[:id]), html: { remote: true, method: :patch } do |f|
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        New Password
+        = f.password_field :password
+
+  .row
+    .small-12.medium-9.large-6.column.small-centered
+      %label
+        Confirm Password
+        = f.password_field :password_confirmation
+
+  .row
+    .small-12.medium-9.large-6.column.small-centered.text-center
+      = f.submit 'Update Password', class: 'button'

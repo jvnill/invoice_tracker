@@ -38,3 +38,4 @@ en:
 
   passwords:
     reset_instructions_sent: 'You will receive an email with instructions on how to reset your password.'
+    reset_successful: 'Your password has been successfully changed'

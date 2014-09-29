@@ -15,7 +15,11 @@ class PasswordReseter
   attr_reader :user
 
   def setup_reset_token
-    UserOption.create_or_initialize!(user, 'password_token', SecureRandom.urlsafe_base64)
+    begin
+      token = SecureRandom.urlsafe_base64
+    end while UserOption.exists?(name: 'password_token', value: token)
+
+    UserOption.create_or_initialize!(user, 'password_token', token)
   end
 
   def save_reset_time

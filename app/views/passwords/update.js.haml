@@ -1,0 +1,8 @@
+- if @user.errors.empty?
+  window.location = '#{new_session_path}'
+
+- else
+  SIT.Common.clearFormErrors()
+
+  - @user.errors.each do |k, v|
+    SIT.Common.addError('#user_#{k}', '#{escape_javascript @user.errors[k].uniq.to_sentence}')
