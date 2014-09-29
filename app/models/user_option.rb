@@ -7,7 +7,7 @@ class UserOption < ActiveRecord::Base
   validates :name, presence: true, inclusion: { in: OPTIONS }
   validates :value, presence: true
   validates :user_id, presence: true, uniqueness: { scope: :name }
-  validates :datatype, presence: true, inclusion: { in: DATATYPES }
+  validates :datatype, inclusion: { in: DATATYPES }
 
   before_validation :set_datatype
 
