@@ -13,8 +13,7 @@ InvoiceTracker::Application.routes.draw do
   resources :invoices do
     member do
       get :download
-      patch :mark_as_sent
-      patch :mark_as_paid
+      patch :cycle_status
     end
   end
 end

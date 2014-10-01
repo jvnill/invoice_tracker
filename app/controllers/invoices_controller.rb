@@ -42,12 +42,10 @@ class InvoicesController < ApplicationController
            show_as_html: params[:preview]
   end
 
-  def mark_as_sent
-    @invoice.update_column :status, 'sent'
-  end
+  def cycle_status
+    @invoice.update_column :status, @invoice.next_status
 
-  def mark_as_paid
-    @invoice.update_column :status, 'paid'
+    render json: { status: @invoice.status.titleize }
   end
 
   private

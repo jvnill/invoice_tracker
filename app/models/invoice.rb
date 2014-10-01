@@ -31,6 +31,10 @@ class Invoice < ActiveRecord::Base
     read_attribute(:page_size).presence || 'A4'
   end
 
+  def next_status
+    STATUSES[(STATUSES.index(status) + 1) % 4]
+  end
+
   private
 
   def set_as_new_invoice
