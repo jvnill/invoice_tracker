@@ -81,6 +81,7 @@ GEM
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt
+    hashie (3.3.1)
     hike (1.2.3)
     i18n (0.6.11)
     jquery-rails (3.0.4)
@@ -101,6 +102,9 @@ GEM
     mime-types (2.3)
     minitest (5.4.1)
     multi_json (1.10.1)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
     pg (0.16.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -210,6 +214,7 @@ DEPENDENCIES
   handlebars_assets
   jquery-rails
   jquery-ui-rails
+  omniauth
   pg
   pry
   quiet_assets
