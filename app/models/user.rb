@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :clients
   has_many :projects, through: :clients
   has_many :user_options
+  has_many :authentications
 
   accepts_nested_attributes_for :user_detail
 
