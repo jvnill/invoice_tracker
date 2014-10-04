@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141003092148) do
     t.datetime "updated_at"
   end
 
+  add_index "authentications", ["uid", "provider"], name: "index_authentications_on_uid_and_provider", using: :btree
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "clients", force: true do |t|
