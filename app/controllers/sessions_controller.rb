@@ -25,28 +25,17 @@ class SessionsController < ApplicationController
   end
 
   def omniauth_callback
-    auth = Authentication.find_by(auth_hash_identifier)
+    handler = OmniauthHandler.authorize(request.env['omniauth.auth'])
 
-    if auth
-      user = auth.user
+    if handler.login_allowed?
+      login(handler.user)
+      redirect_to(invoices_path)
 
     else
-      user = User.where(email: omniauth_user_details['email']).first_or_initialize
-      if user.persisted?
-        user.authentications.create!(auth_hash_identifier)
-      else
-        user.skipping_password = true
-        unless user.save
-          flash[:error] = 'There has been some errors with your user setup. Please register normally'
-          reset_session
-          redirect_to new_session_path
-          return
-        end
-      end
+      flash[:error] = 'There has been some errors with your user setup. Please login normally'
+      reset_session
+      redirect_to new_session_path
     end
-
-    login(user)
-    redirect_to(invoices_path)
   end
 
   private
@@ -57,17 +46,5 @@ class SessionsController < ApplicationController
     else
       cookies.signed[:auth_token] = user.auth_token
     end
-  end
-
-  def omniauth_user_details
-    @omniauth_user_details ||= omniauth_hash['info']
-  end
-
-  def omniauth_hash
-    @omniauth_hash ||= request.env['omniauth.auth']
-  end
-
-  def auth_hash_identifier
-    @auth_hash_identifier ||= { uid: omniauth_hash['uid'], provider: omniauth_hash['provider'] }
   end
 end

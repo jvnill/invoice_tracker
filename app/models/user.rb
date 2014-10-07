@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  has_secure_password validations: false
 
   has_one :user_detail
 
@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   attr_accessor :skipping_password
 
   private
+
+  def skipping_password?
+    !!skipping_password
+  end
 
   def email_present?
     email.present?
