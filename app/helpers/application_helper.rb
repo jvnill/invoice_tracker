@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def icon_link(icon, text, url)
+    link_to url do
+      content_tag(:span, '', class: "icon icon-#{icon}") + text
+    end
+  end
+
   def navlink(text, url, link_options = {})
     content_tag :li, link_to(text, url, link_options), class: ('active' if current_page?(url))
   end
