@@ -40,4 +40,11 @@ describe Invoice do
   describe '#page_size' do
     it { expect(create(:invoice).page_size).to eql('A4') }
   end
+
+  describe '#next_status' do
+    it { expect(Invoice.new(status: 'new').next_status).to eql('sent') }
+    it { expect(Invoice.new(status: 'sent').next_status).to eql('paid') }
+    it { expect(Invoice.new(status: 'paid').next_status).to eql('void') }
+    it { expect(Invoice.new(status: 'void').next_status).to eql('new') }
+  end
 end
