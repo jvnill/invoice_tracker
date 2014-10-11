@@ -11,7 +11,7 @@ Invoice Tracker
 
 * ~~Menu in small devices~~
 * ~~Reset password implementation~~
-* Expose links to update invoice status
+* ~~Allow ability to change invoice status~~
 * Add angular part for adding a total in invoice form
 * Allow PDF Layout
 * API
