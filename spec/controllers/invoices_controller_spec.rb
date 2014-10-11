@@ -118,23 +118,13 @@ describe InvoicesController do
     it { expect(response.body).to match("<dt>Invoice No:</dt>\n<dd>#{invoice.number}</dd>") }
   end
 
-  describe 'PATCH mark_as_sent' do
+  describe 'PATCH cycle_status' do
     let!(:invoice) { create(:invoice, project: project, user: user) }
 
-    before { xhr :patch, :mark_as_sent, id: invoice.id }
+    before { xhr :patch, :cycle_status, id: invoice.id }
 
     it { expect(response).to be_success }
-    it { expect(response).to render_template(:mark_as_sent) }
+    it { expect(response.body).to eql({ status: 'Sent' }.to_json) }
     it { expect(invoice.reload.status).to eql('sent') }
-  end
-
-  describe 'PATCH mark_as_paid' do
-    let!(:invoice) { create(:invoice, project: project, user: user) }
-
-    before { xhr :patch, :mark_as_paid, id: invoice.id }
-
-    it { expect(response).to be_success }
-    it { expect(response).to render_template(:mark_as_paid) }
-    it { expect(invoice.reload.status).to eql('paid') }
   end
 end
