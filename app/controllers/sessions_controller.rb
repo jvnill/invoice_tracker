@@ -32,8 +32,8 @@ class SessionsController < ApplicationController
       redirect_to(invoices_path)
 
     else
-      flash[:error] = 'There has been some errors with your user setup. Please login normally'
       reset_session
+      flash[:error] = I18n.t('sessions.omniauth_error')
       redirect_to new_session_path
     end
   end

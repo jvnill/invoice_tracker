@@ -39,6 +39,7 @@ en:
   sessions:
     login_error: 'There were issues with your email and password'
     logged_in_user_required: 'A logged in user is required to access that content'
+    omniauth_error: 'There has been some errors with your user setup. Please login normally'
 
   users:
     create_success: 'Welcome to Simple Invoice Tracker!'
