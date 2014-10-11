@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_secure_password validations: false
+  has_secure_password validations: proc { |user| !user.skipping_password? }
 
   has_one :user_detail
 
@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :user_detail
 
-  validates :password, presence: true, on: :create, unless: :skipping_password?
   validates :email, presence: true, length: { within: 6..100, if: :email_present? }, format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i, if: :email_present? }
 
   after_create :set_auth_token
