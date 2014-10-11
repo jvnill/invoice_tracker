@@ -38,13 +38,9 @@ class OmniauthHandler
   def find_or_create_user_from_email
     user = User.where(email: user_details['email']).first_or_initialize
 
-    if user.new_record?
-      user.skipping_password = true
-      user.save
-    else
+    if user.save(validate: false)
+      @user = user
       user.authentications.create!(auth_hash_identifier)
     end
-
-    @user = user if user.persisted?
   end
 end

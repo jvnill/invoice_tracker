@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_secure_password validations: proc { |user| !user.skipping_password? }
+  has_secure_password
 
   has_one :user_detail
 
@@ -15,13 +15,7 @@ class User < ActiveRecord::Base
 
   after_create :set_auth_token
 
-  attr_accessor :skipping_password
-
   private
-
-  def skipping_password?
-    !!skipping_password
-  end
 
   def email_present?
     email.present?
