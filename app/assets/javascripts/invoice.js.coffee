@@ -7,7 +7,11 @@ class SIT.Invoice
     $('.new-invoice-item-link').on 'click', (event) ->
       event.preventDefault()
 
-      idx = Math.max.apply(Math, $('.invoice-item-container input').map(-> parseInt(this.name.slice(34)))) + 1
+      indexes = $.map($('.invoice-item-container input'), (input) -> parseInt(input.name.slice(34)))
+      indexes.push(-1)
+
+      idx = Math.max.apply(Math, indexes) + 1
+
       $('#invoice_invoice_items').append "<div class='row invoice-item-container'><div class='small-12 medium-6 column name'><input type='text' placeholder='Item name' name='invoice[invoice_items_attributes][#{idx}][name]'></div><div class='small-4 medium-2 column quantity'><input type='text' placeholder='Qty' name='invoice[invoice_items_attributes][#{idx}][quantity]'></div><div class='small-8 medium-4 column amt'><input type='text' placeholder='Unit Amt' name='invoice[invoice_items_attributes][#{idx}][unit_amount]'></input><div><i class='fi-minus-circle'></i></div></div></div>"
 
       $('#invoice_no_quantity').trigger('change')
