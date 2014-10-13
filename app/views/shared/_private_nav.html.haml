@@ -7,7 +7,7 @@
 
   %section.top-bar-section
     %ul.right
-      = navlink 'Profile', [:edit, current_user]
+      = navlink 'Profile', [:edit, current_user], remote: true
       = navlink 'Logout', destroy_session_path, method: :delete
 
     %ul.left
