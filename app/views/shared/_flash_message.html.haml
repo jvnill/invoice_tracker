@@ -1,4 +1,4 @@
 - flash.each do |type, message|
-  .alert-box{ class: type }
+  .alert-box{ class: type, data: { alert: true } }
     = message
     = link_to '&times;'.html_safe, '#', class: 'close'

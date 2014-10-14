@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update_attributes(user_params)
-      flash[:notice] = I18n.t('users.update_success')
+      flash.now[:success] = I18n.t('users.update_success')
     end
   end
 

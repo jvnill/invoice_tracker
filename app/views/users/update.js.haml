@@ -1,2 +1,3 @@
 - if current_user.errors.empty?
-  window.location = '#{invoices_path}'
+  $('.alert-box').remove()
+  $('#profile-dialog').prepend('#{escape_javascript render('shared/flash_message')}')
