@@ -12,9 +12,9 @@ Invoice Tracker
 * ~~Menu in small devices~~
 * ~~Reset password implementation~~
 * ~~Allow ability to change invoice status~~
-* Update profile form
+* ~~Update profile form~~
 * Allow selection of payment details
-* Allow password change
+* ~~Allow password change~~
 * Add angular part for adding a total in invoice form
 * Allow invoice to be emailed
 * Allow PDF Layout
