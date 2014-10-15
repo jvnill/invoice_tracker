@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe ApplicationHelper do
+  describe '#icon_link' do
+    it { expect(helper.icon_link('icon', 'text', 'url')).to eql('<a href="url"><span class="icon icon-icon"></span>text</a>') }
+  end
+
   describe '#navlink' do
     it { expect(helper.navlink('text', '')).to eql('<li class="active"><a href="">text</a></li>') }
     it { expect(helper.navlink('text', 'url')).to eql('<li><a href="url">text</a></li>') }
