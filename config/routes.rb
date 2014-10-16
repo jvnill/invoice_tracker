@@ -1,9 +1,10 @@
 InvoiceTracker::Application.routes.draw do
   root to: 'sessions#new'
 
-  get '/login' => 'sessions#new', as: :new_session
-  post '/login' => 'sessions#create', as: :create_session
-  delete '/logout' => 'sessions#destroy', as: :destroy_session
+  get    '/login'                   => 'sessions#new',               as: :new_session
+  post   '/login'                   => 'sessions#create',            as: :create_session
+  delete '/logout'                  => 'sessions#destroy',           as: :destroy_session
+  get    '/auth/:provider/callback' => 'sessions#omniauth_callback', as: :omniauth_callback
 
   resources :users, only: %i[new create edit update]
   resources :projects

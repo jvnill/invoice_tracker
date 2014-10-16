@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :authentication do
+    association :user
+    sequence(:uid) { |n| "UID#{n}" }
+    provider 'github'
+  end
+
   factory :client do
     sequence(:name) { |n| "Client #{n}" }
     sequence(:contact_person) { |n| "Contact#{n} Person" }

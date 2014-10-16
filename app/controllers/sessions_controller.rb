@@ -24,6 +24,20 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def omniauth_callback
+    handler = OmniauthHandler.authorize(request.env['omniauth.auth'])
+
+    if handler.login_allowed?
+      login(handler.user)
+      redirect_to(invoices_path)
+
+    else
+      reset_session
+      flash[:error] = I18n.t('sessions.omniauth_error')
+      redirect_to new_session_path
+    end
+  end
+
   private
 
   def login(user)

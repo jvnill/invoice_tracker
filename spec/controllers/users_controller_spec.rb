@@ -47,7 +47,7 @@ describe UsersController do
       it { expect(response).to be_success }
       it { expect(response).to render_template(:update) }
       it { expect(user.reload.user_detail.name).to eql('Jim') }
-      it { expect(flash[:notice]).to eql(I18n.t('users.update_success')) }
+      it { expect(flash[:success]).to eql(I18n.t('users.update_success')) }
     end
 
     context 'invalid update' do
