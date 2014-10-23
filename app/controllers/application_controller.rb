@@ -30,4 +30,12 @@ class ApplicationController < ActionController::Base
       format.js
     end
   end
+
+  def login(user)
+    if params[:remember_me]
+      cookies.permanent.signed[:auth_token] = user.auth_token
+    else
+      cookies.signed[:auth_token] = user.auth_token
+    end
+  end
 end
