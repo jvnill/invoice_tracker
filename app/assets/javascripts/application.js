@@ -19,6 +19,7 @@
 //= require foundation/foundation.offcanvas
 //= require foundation/foundation.reveal
 //= require foundation/foundation.topbar
+//= require foundation/foundation.tab
 //= require jquery.ui.datepicker
 //= require handlebars.runtime
 //= require_tree ./templates
