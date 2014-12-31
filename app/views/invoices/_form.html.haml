@@ -4,7 +4,7 @@
       %h3.subheader #{@invoice.persisted? ? 'Edit' : 'New'} Invoice
 
   .row
-    .small-12.medium-6.column
+    .small-12.column
       %label
         Project
         = link_to new_project_path(inline: true), remote: true do
@@ -13,27 +13,22 @@
         .select-container
           = project_select(current_user.projects, @invoice.project_id)
 
+  .row
     .small-12.medium-6.column
       %label
         Client Reference Number
         = f.text_field :client_reference_number
 
-  .row
     .small-12.medium-6.column
       %label
         Invoice Number
         = f.text_field :number
 
+  .row
     .small-12.medium-6.column
       %label
         Currency
         = f.text_field :currency
-
-  .row
-    .small-12.medium-6.column
-      %label
-        PDF Page Size
-        = f.select :page_size, Invoice::PAGE_SIZES
 
     .small-12.medium-6.column
       %label

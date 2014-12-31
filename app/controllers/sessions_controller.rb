@@ -37,14 +37,4 @@ class SessionsController < ApplicationController
       redirect_to new_session_path
     end
   end
-
-  private
-
-  def login(user)
-    if params[:remember_me]
-      cookies.permanent.signed[:auth_token] = user.auth_token
-    else
-      cookies.signed[:auth_token] = user.auth_token
-    end
-  end
 end

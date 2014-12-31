@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
+      login(@user)
       flash[:success] = I18n.t('users.create_success')
     end
   end

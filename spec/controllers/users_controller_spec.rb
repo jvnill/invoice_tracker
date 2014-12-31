@@ -15,7 +15,7 @@ describe UsersController do
       it { expect(response).to be_success }
       it { expect(response).to render_template(:create) }
       it { expect(assigns(:user)).to be_persisted }
-      it { expect(session[:user_id]).to be_present }
+      it { expect(cookies.signed[:auth_token]).to eql(assigns(:user).auth_token) }
       it { expect(flash[:success]).to eql(I18n.t('users.create_success')) }
     end
 
