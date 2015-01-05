@@ -1,8 +1,8 @@
-ruby '2.1.2'
+ruby '2.2.0'
 
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.1.8'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancan'
