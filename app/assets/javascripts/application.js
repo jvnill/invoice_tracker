@@ -21,6 +21,7 @@
 //= require foundation/foundation.topbar
 //= require foundation/foundation.tab
 //= require jquery.ui.datepicker
+//= require jquery.spin
 //= require handlebars.runtime
 //= require_tree ./templates
 //= require_tree .

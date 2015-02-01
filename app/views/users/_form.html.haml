@@ -1,7 +1,15 @@
 %dl.tabs.vertical{ data: { tab: true } }
   %dd.active= link_to 'Profile Settings', '#profile-settings'
   %dd= link_to 'Invoice Payment Details', '#invoice-payment-details'
+  %dd= link_to 'Invoice Layouts', '#invoice-layouts'
 
-.tabs-content
-  .content.active#profile-settings= render 'profile_settings_form'
-  .content#invoice-payment-details= render 'invoice_payment_details_form'
+.tabs-content.vertical
+  .content.active#profile-settings
+    = render 'profile_settings_form'
+
+  .content#invoice-payment-details
+    = render 'payment_details/list', payment_details: current_user.payment_details
+    = render 'payment_details/form', payment_detail: PaymentDetail.new
+
+  .content#invoice-layouts
+    = render 'invoice_layouts_form'
