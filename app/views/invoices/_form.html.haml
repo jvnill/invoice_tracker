@@ -33,7 +33,7 @@
     .small-12.medium-6.column
       %label
         Payment Details
-        = f.text_area :payment_details
+        = f.select :payment_detail_id, current_user.payment_details.map { |payment_detail| [payment_detail.title, payment_detail.id] }, { include_blank: true }
 
   .row
     .small-12.medium-6.column
