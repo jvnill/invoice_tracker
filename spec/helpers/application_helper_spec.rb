@@ -16,7 +16,7 @@ describe ApplicationHelper do
 
     before { expect(helper).to receive(:grouped_project_options).and_return({ 1 => [2] }) }
 
-    it { expect(helper.project_select(user.projects)).to eql("<select id=\"invoice_project_id\" name=\"invoice[project_id]\"><option value=\"\"></option>\n<optgroup label=\"1\"><option value=\"2\">2</option></optgroup></select>") }
+    it { expect(helper.project_select(user.projects)).to eql("<select name=\"invoice[project_id]\" id=\"invoice_project_id\"><option value=\"\"></option>\n<optgroup label=\"1\"><option value=\"2\">2</option></optgroup></select>") }
   end
 
   describe '#grouped_project_options' do

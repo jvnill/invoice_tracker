@@ -32,7 +32,7 @@ describe UsersController do
   describe 'GET edit' do
     include_context 'logged in user'
 
-    before { get :edit, id: 'foo' }
+    before { xhr :get, :edit, id: 'foo' }
 
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }
