@@ -168,4 +168,5 @@
           TOTAL DUE
           = number_to_currency @invoice.total_amount, unit: @invoice.currency
 
-    #footer= simple_format @invoice.payment_details
+    - if @invoice.payment_detail
+      #footer= simple_format @invoice.payment_detail.text

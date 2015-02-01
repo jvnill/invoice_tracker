@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
 
   has_one :user_detail
 
-  has_many :invoices,        dependent: :destroy
-  has_many :clients,         dependent: :destroy
+  has_many :invoices,        dependent: :destroy, inverse_of: :user
+  has_many :clients,         dependent: :destroy, inverse_of: :user
   has_many :projects,          through: :clients
-  has_many :user_options,    dependent: :destroy
-  has_many :authentications, dependent: :destroy
-  has_many :payment_details, dependent: :destroy
+  has_many :user_options,    dependent: :destroy, inverse_of: :user
+  has_many :authentications, dependent: :destroy, inverse_of: :user
+  has_many :payment_details, dependent: :destroy, inverse_of: :user
 
   accepts_nested_attributes_for :user_detail
 
