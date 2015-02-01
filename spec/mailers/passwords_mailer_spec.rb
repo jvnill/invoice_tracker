@@ -5,7 +5,7 @@ describe PasswordsMailer do
     let!(:user) { create(:user) }
     let!(:user_option) { create(:user_option, user: user, name: 'password_token', value: 'value') }
 
-    before { PasswordsMailer.reset_instructions(user).deliver }
+    before { PasswordsMailer.reset_instructions(user).deliver_now }
 
     it { expect(ActionMailer::Base.deliveries.size).to eql(1) }
     it { expect(ActionMailer::Base.deliveries.first.to).to include(user.email) }

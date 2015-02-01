@@ -2,7 +2,7 @@ class UserOption < ActiveRecord::Base
   OPTIONS   = %w[password_token password_reset_at]
   DATATYPES = %w[date datetime string integer decimal]
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :user_options
 
   validates :name, presence: true, inclusion: { in: OPTIONS }
   validates :value, presence: true

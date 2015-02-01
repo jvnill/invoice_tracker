@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
-  has_many :invoices, dependent: :destroy
+  has_many :invoices, dependent: :destroy, inverse_of: :project
 
-  belongs_to :client
+  belongs_to :client, inverse_of: :projects
 
   has_one :user, through: :client
 

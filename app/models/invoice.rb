@@ -4,8 +4,9 @@ class Invoice < ActiveRecord::Base
 
   has_many :invoice_items, dependent: :destroy, inverse_of: :invoice
 
-  belongs_to :user
-  belongs_to :project
+  belongs_to :user,           inverse_of: :invoices
+  belongs_to :project,        inverse_of: :invoices
+  belongs_to :payment_detail, inverse_of: :invoices
 
   accepts_nested_attributes_for :invoice_items, allow_destroy: true
 

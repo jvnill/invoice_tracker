@@ -1,0 +1,10 @@
+- if @payment_detail.errors.empty?
+  $('#invoice-payment-details .select-wrapper').replaceWith($('<div>#{escape_javascript render('list', payment_detail: @payment_detail, payment_details: current_user.payment_details)}</div>').find('.select-wrapper'))
+  $('#invoice-payment-details form').replaceWith('#{escape_javascript render('form', payment_detail: @payment_detail)}')
+
+- else
+  SIT.Common.clearFormErrors()
+
+  - %w[title text].each do |attr|
+    - if @payment_detail.errors[attr].present?
+      SIT.Common.addError('#payment_detail_#{attr}', '#{escape_javascript @payment_detail.errors[attr].uniq.to_sentence}')

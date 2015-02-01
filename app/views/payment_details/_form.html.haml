@@ -1,0 +1,16 @@
+= form_for payment_detail, html: { remote: true } do |f|
+  .row
+    .small-12.column
+      %label
+        Title
+        = f.text_field :title
+
+  .row
+    .small-12.column
+      %label
+        Text
+        = f.text_area :text, rows: 5
+
+  .row
+    .small-12.column.small-centered.text-center
+      = f.submit 'Save', class: 'button'
