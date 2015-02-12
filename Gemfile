@@ -6,7 +6,7 @@ gem 'rails', '4.2.0'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancan'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'haml-rails'
