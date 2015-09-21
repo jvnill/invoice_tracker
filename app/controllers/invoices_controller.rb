@@ -48,6 +48,11 @@ class InvoicesController < ApplicationController
     render json: { status: @invoice.status.titleize }
   end
 
+  def next_invoice_number
+    max = Invoice.where(project_id: params[:project_id]).maximum(:number)
+    render text: max && max.succ
+  end
+
   private
 
   def invoice_params

@@ -127,4 +127,22 @@ describe InvoicesController do
     it { expect(response.body).to eql({ status: 'Sent' }.to_json) }
     it { expect(invoice.reload.status).to eql('sent') }
   end
+
+  describe 'GET next_invoice_number' do
+    context 'given no invoices yet' do
+      before { xhr :get, :next_invoice_number, project_id: project.id }
+
+      it { expect(response).to be_success }
+      it { expect(response.body).to be_empty }
+    end
+
+    context 'given an invoice' do
+      let!(:invoice) { create(:invoice, project: project, user: user, number: '0012') }
+
+      before { xhr :get, :next_invoice_number, project_id: project.id }
+
+      it { expect(response).to be_success }
+      it { expect(response.body).to eq('0013') }
+    end
+  end
 end

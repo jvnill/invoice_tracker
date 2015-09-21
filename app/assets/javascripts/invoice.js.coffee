@@ -43,5 +43,14 @@ class SIT.Invoice
         $('#invoice_invoice_items .amt').addClass('small-8')
         $('form .quantity').show()
 
+    $('#invoice_project_id').on 'change', ->
+      if @value
+        $.ajax
+          url: '/invoices/next_invoice_number'
+          data: { project_id: @value }
+          type: 'GET'
+          success: (response) ->
+            $('#invoice_number').val(response) if response.length
+
   defaultScripts : ->
     $('#invoice_no_quantity').trigger('change')

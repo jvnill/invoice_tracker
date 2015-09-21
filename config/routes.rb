@@ -17,5 +17,9 @@ InvoiceTracker::Application.routes.draw do
       get :download
       patch :cycle_status
     end
+
+    collection do
+      get :next_invoice_number
+    end
   end
 end
