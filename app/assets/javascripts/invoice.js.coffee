@@ -24,10 +24,13 @@ class SIT.Invoice
       if container.next().attr('type') == 'hidden'
         container
           .hide()
+          .addClass('deleted')
           .append("<input type='hidden' value='1' name='invoice[invoice_items_attributes][#{parseInt(container.next().attr('name').slice(34))}][_destroy]'></input>")
 
       else
         container.remove()
+
+      SIT.Invoice.updateTotal()
 
     $('#invoice_no_quantity').on 'change', ->
       $('#invoice_invoice_items .name').removeClass('medium-6 medium-8')
@@ -52,5 +55,21 @@ class SIT.Invoice
           success: (response) ->
             $('#invoice_number').val(response) if response.length
 
+    $('#invoice_invoice_items').on 'keydown', '.quantity :input, .amt :input', ->
+      SIT.Invoice.updateTotal()
+
   defaultScripts : ->
     $('#invoice_no_quantity').trigger('change')
+    SIT.Invoice.updateTotal()
+
+  @updateTotal : ->
+    total = 0
+    noQuantity = $('#invoice_no_quantity').is(':checked')
+
+    $('#invoice_invoice_items .row:not(".deleted")').each (index, row) ->
+      quantity = if noQuantity then 1 else $(row).find('.quantity :input').val()
+      amt = $(row).find('.amt :input').val()
+
+      total += quantity * amt if quantity && amt
+
+    $('#total strong').text("Total: #{$('#invoice_currency').val()} #{total.toFixed(2)}")
