@@ -13,11 +13,13 @@ Invoice Tracker
 * ~~Reset password implementation~~
 * ~~Allow ability to change invoice status~~
 * ~~Update profile form~~
-* Allow selection of payment details
+* ~~Allow selection of payment details~~
 * ~~Allow password change~~
 * Add angular part for adding a total in invoice form
 * Allow invoice to be emailed
-* Allow PDF Layout
+* Add PDF Layout choices
+* ~~Update PDF Layouts to better handle multiple pages~~
 * API
 * Reports
 * Login via 3rd party services
+* Pagination
