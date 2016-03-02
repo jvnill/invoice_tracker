@@ -1,3 +1,3 @@
 unless Rails.env.production?
-  WickedPdf.config = { exe_path: Rails.root.join('vendor', 'bin', 'wkhtmltopdf').to_s }
+  WickedPdf.config = { exe_path: '/usr/local/bin/wkhtmltopdf' }
 end

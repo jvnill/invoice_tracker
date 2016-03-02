@@ -1,10 +1,10 @@
 %tr
-  %td= invoice_item.name
+  %td.desc= invoice_item.name
 
   - if invoice.no_quantity?
-    %td.text-right= invoice_item.unit_amount
+    %td.total.text-right= invoice_item.unit_amount
 
   - else
-    %td= invoice_item.quantity
-    %td= invoice_item.unit_amount
-    %td.text-right= number_with_precision invoice_item.quantity * invoice_item.unit_amount, precision: 2
+    %td.qty= invoice_item.quantity
+    %td.unit= invoice_item.unit_amount
+    %td.total.text-right= number_with_precision invoice_item.quantity * invoice_item.unit_amount, precision: 2

@@ -1,0 +1,231 @@
+!!!
+%html
+  %head
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'
+
+    :css
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      a {
+        color: #5D6975;
+        text-decoration: underline;
+      }
+
+      .wrapper {
+        position: relative;
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0 auto;
+        color: #001028;
+        background: #FFFFFF;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-family: Arial;
+        page-break-after: always;
+      }
+
+      header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+      }
+
+      #logo {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      #logo img {
+        width: 90px;
+      }
+
+      h1 {
+        border-top: 1px solid  #5D6975;
+        border-bottom: 1px solid  #5D6975;
+        color: #5D6975;
+        font-size: 2.4em;
+        line-height: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 20px 0;
+      }
+
+      #project {
+        float: left;
+      }
+
+      #project span {
+        color: #5D6975;
+        text-align: right;
+        width: 52px;
+        margin-right: 10px;
+        display: inline-block;
+        font-size: 0.8em;
+      }
+
+      #company {
+        float: right;
+        text-align: right;
+      }
+
+      #project div,
+      #company div {
+        white-space: nowrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+      }
+
+      table tr:nth-child(2n-1) td {
+        background: #F5F5F5;
+      }
+
+      table th,
+      table td {
+        text-align: center;
+      }
+
+      table th {
+        padding: 5px 20px;
+        color: #5D6975;
+        border-bottom: 1px solid #C1CED9;
+        white-space: nowrap;
+        font-weight: normal;
+      }
+
+      table .service,
+      table .desc {
+        text-align: left;
+      }
+
+      table td {
+        padding: 20px;
+        text-align: right;
+      }
+
+      table td.service,
+      table td.desc {
+        vertical-align: top;
+      }
+
+      table td.unit,
+      table td.qty,
+      table td.total {
+        font-size: 1.2em;
+      }
+
+      table td.grand {
+        border-top: 1px solid #5D6975;;
+      }
+
+      #notices .notice {
+        color: #5D6975;
+        font-size: 1.2em;
+      }
+
+      footer {
+        color: #5D6975;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #C1CED9;
+        padding: 8px 0;
+        text-align: center;
+      }
+
+  %body
+    .wrapper
+      %header.clearfix
+        #logo
+        %h1 INVOICE #{@invoice.number}
+
+        #company.clearfix
+          %div= @invoice.date.to_s(:default)
+          %div= @invoice.project.client.name
+          %div= @invoice.project.name
+
+        #project
+          %div
+            %span PROJECT
+            = @invoice.project.name
+
+          %div
+            %span CLIENT
+            = @invoice.project.client.name
+
+      %main
+        %table
+          %thead
+            %tr
+              %th.desc DESCRIPTION
+
+              - if @invoice.no_quantity?
+                %th TOTAL (#{@invoice.currency})
+
+              - else
+                %th PRICE
+                %th QTY
+                %th TOTAL (#{@invoice.currency})
+
+          %tbody
+            = render partial: 'invoice_item', collection: @invoice.invoice_items, locals: { invoice: @invoice }
+
+        - if @invoice.payment_detail
+          #notices
+            %div NOTICE:
+            .notice= simple_format @invoice.payment_detail.text
+
+      %footer
+        Invoice was created on a computer and is valid without the signature and seal.
+
+    :javascript
+      var page = 0
+      var maxHeight = 0
+      var pageHeader = $('header').clone(true)
+      var th = $('table thead').clone(true)
+      var notice = $('#notices').clone(true)
+      var footer = $('footer').clone(true)
+      var rows = $('table tbody tr').clone(true).toArray()
+
+      function draw() {
+        if (page === 0) { $('body').html('') }
+
+        var wrapper = $('<div class="wrapper"></div>').appendTo('body');
+
+        if (page === 0) { wrapper.append(pageHeader) }
+
+        wrapper.append('<table><thead>' + th.html() + '</thead><tbody></tbody><table>')
+        wrapper.append(footer.html())
+
+        maxHeight = wrapper.height() - wrapper.find('footer').outerHeight() - wrapper.find('header').outerHeight() - wrapper.find('thead').outerHeight() - 30
+
+        while (rows.length && maxHeight > wrapper.find('tbody').outerHeight()) {
+          wrapper.find('tbody').append(rows.shift())
+        }
+
+        if (maxHeight < wrapper.find('tbody').outerHeight()) {
+          rows.unshift(wrapper.find('tbody tr').last())
+        }
+      }
+
+      while (rows.length) {
+        draw()
+        page++
+      }
+
+      if (notice.length) {
+        $('.wrapper').last().find('table').after(notice)
+
+        if (maxheight < wrapper.find('tbody').outerHeight() + notice.outerHeight()) {
+          $('<div class="wrapper">' + notice.html() + footer.html() + '</div>').appendTo('body')
+          notice.remove()
+        }
+      }

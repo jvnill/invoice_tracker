@@ -1,0 +1,32 @@
+%header.clearfix
+  %h1 INVOICE #{invoice.number}
+
+  #company.clearfix
+    %div= invoice.date.to_s(:default)
+    %div= invoice.project.client.name
+    %div= invoice.project.name
+
+  #project
+    %div
+      %span PROJECT
+      = invoice.project.name
+
+    %div
+      %span CLIENT
+      = invoice.project.client.name
+
+%main
+  %table
+    %thead
+      %tr
+        %th.desc DESCRIPTION
+
+        - if invoice.no_quantity?
+          %th TOTAL (#{invoice.currency})
+
+        - else
+          %th PRICE
+          %th QTY
+          %th TOTAL (#{invoice.currency})
+
+    %tbody

@@ -38,8 +38,9 @@ class InvoicesController < ApplicationController
            disposition: 'attachment',
            page_size: @invoice.page_size,
            dpi: 300,
-           margin: { top: 0, bottom: 0, left: 0, right: 0 },
-           show_as_html: params[:preview]
+           margin: { top: 20, bottom: 0, left: 20, right: 20 },
+           show_as_html: params[:preview],
+           template: 'invoices/template1'
   end
 
   def cycle_status
