@@ -114,8 +114,7 @@ describe InvoicesController do
 
     before { get :download, id: invoice.id, preview: true }
 
-    it { expect(response.body).to match('<body class=\'pdf\'>') }
-    it { expect(response.body).to match("<dt>Invoice No:</dt>\n<dd>#{invoice.number}</dd>") }
+    it { expect(response.body).to match("<h1>INVOICE #{invoice.number}</h1>") }
   end
 
   describe 'PATCH cycle_status' do
