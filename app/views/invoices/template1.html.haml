@@ -28,6 +28,10 @@
         page-break-after: always;
       }
 
+      .wrapper:last-child {
+        page-break-after: avoid;
+      }
+
       header {
         padding: 10px 0;
         margin-bottom: 30px;
@@ -149,8 +153,6 @@
 
         #company.clearfix
           %div= @invoice.date.to_s(:default)
-          %div= @invoice.project.client.name
-          %div= @invoice.project.name
 
         #project
           %div
@@ -202,8 +204,8 @@
 
         if (page === 0) { wrapper.append(pageHeader) }
 
-        wrapper.append('<table><thead>' + th.html() + '</thead><tbody></tbody><table>')
-        wrapper.append(footer.html())
+        wrapper.append('<table><thead>' + th.html() + '</thead><tbody></tbody></table>')
+        wrapper.append('<footer>' + footer.html() + '</footer>')
 
         maxHeight = wrapper.height() - wrapper.find('footer').outerHeight() - wrapper.find('header').outerHeight() - wrapper.find('thead').outerHeight() - 30
 
