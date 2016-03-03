@@ -23,3 +23,4 @@ Invoice Tracker
 * Reports
 * Login via 3rd party services
 * Pagination
+* Cache Invoice Total
