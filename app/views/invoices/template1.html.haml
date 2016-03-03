@@ -180,6 +180,11 @@
           %tbody
             = render partial: 'invoice_item', collection: @invoice.invoice_items, locals: { invoice: @invoice }
 
+          %tfoot
+            %tr
+              %td.description{ colspan: @invoice.no_quantity? ? 1 : 3 } GRAND TOTAL
+              %td.total= number_to_currency @invoice.total_amount, unit: @invoice.currency
+
         - if @invoice.payment_detail
           #notices
             %div NOTICE:
@@ -191,8 +196,10 @@
     :javascript
       var page = 0
       var maxHeight = 0
+      var wrapper = null
       var pageHeader = $('header').clone(true)
       var th = $('table thead').clone(true)
+      var tf = $('table tfoot').clone(true)
       var notice = $('#notices').clone(true)
       var footer = $('footer').clone(true)
       var rows = $('table tbody tr').clone(true).toArray()
@@ -200,7 +207,7 @@
       function draw() {
         if (page === 0) { $('body').html('') }
 
-        var wrapper = $('<div class="wrapper"></div>').appendTo('body');
+        wrapper = $('<div class="wrapper"></div>').appendTo('body');
 
         if (page === 0) { wrapper.append(pageHeader) }
 
@@ -223,10 +230,12 @@
         page++
       }
 
-      if (notice.length) {
-        $('.wrapper').last().find('table').after(notice)
+      wrapper.find('table').append(tf)
 
-        if (maxheight < wrapper.find('tbody').outerHeight() + notice.outerHeight()) {
+      if (notice.length) {
+        wrapper.find('table').after(notice)
+
+        if (maxHeight < wrapper.find('tbody').outerHeight() + notice.outerHeight()) {
           $('<div class="wrapper">' + notice.html() + footer.html() + '</div>').appendTo('body')
           notice.remove()
         }

@@ -36,9 +36,9 @@ class InvoicesController < ApplicationController
   def download
     render pdf: @invoice.number.to_s,
            disposition: 'attachment',
-           page_size: @invoice.page_size,
+           page_height: 1123,
            dpi: 300,
-           margin: { top: 20, bottom: 0, left: 20, right: 20 },
+           margin: { bottom: 0 },
            show_as_html: params[:preview],
            template: 'invoices/template1'
   end
