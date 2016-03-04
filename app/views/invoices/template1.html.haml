@@ -152,7 +152,10 @@
         %h1 INVOICE #{@invoice.number}
 
         #company.clearfix
-          %div= @invoice.date.to_s(:default)
+          - if detail = current_user.user_detail
+            - %w[name address1 address2 address3 country postal_code].each do |attr|
+              - if detail.send(attr).present?
+                %div= detail.send(attr)
 
         #project
           %div
@@ -162,6 +165,10 @@
           %div
             %span CLIENT
             = @invoice.project.client.name
+
+          %div
+            %span DATE
+            = @invoice.date.to_s(:default)
 
       %main
         %table

@@ -207,13 +207,17 @@
   %body
     %header.clearfix
       #company
-        %h2.name= @invoice.project.name
+        - if detail = current_user.user_detail
+          - %w[name address1 address2 address3 country postal_code].each do |attr|
+            - if detail.send(attr).present?
+              %div{ class: attr }= detail.send(attr)
 
     %main
       #details.clearfix
         #client
           .to INVOICE TO:
           %h2.name= @invoice.project.client.name
+          %div= @invoice.project.name
 
         #invoice
           %h1 INVOICE #{@invoice.number}
@@ -273,7 +277,7 @@
         wrapper.append('<table><thead>' + th.html() + '</thead><tbody></tbody></table>')
         wrapper.append('<footer>' + footer.html() + '</footer>')
 
-        maxHeight = wrapper.height() - wrapper.find('footer').outerHeight() - wrapper.find('header').outerHeight() - wrapper.find('thead').outerHeight() - 30
+        maxHeight = wrapper.height() - wrapper.find('footer').outerHeight() - wrapper.find('header').outerHeight() - wrapper.find('thead').outerHeight() - wrapper.find('#details').outerHeight() - 30
 
         while (rows.length && maxHeight > wrapper.find('tbody').outerHeight()) {
           wrapper.find('tbody').append(rows.shift())
