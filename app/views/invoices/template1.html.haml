@@ -178,7 +178,7 @@
                 %th TOTAL (#{@invoice.currency})
 
           %tbody
-            = render partial: 'invoice_item', collection: @invoice.invoice_items, locals: { invoice: @invoice }
+            = render partial: 'invoice_item', collection: @invoice.invoice_items.order('created_at ASC'), locals: { invoice: @invoice }
 
           %tfoot
             %tr
