@@ -15,12 +15,14 @@ Invoice Tracker
 * ~~Update profile form~~
 * ~~Allow selection of payment details~~
 * ~~Allow password change~~
-* Add angular part for adding a total in invoice form
 * Allow invoice to be emailed
-* Add PDF Layout choices
+* ~~Add PDF Layout choices~~
 * ~~Update PDF Layouts to better handle multiple pages~~
 * API
 * Reports
 * Login via 3rd party services
-* Pagination
+* ~~Pagination~~
 * Cache Invoice Total
+
+
+* Move to Ember/Angular
