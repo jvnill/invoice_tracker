@@ -20,3 +20,7 @@ class SIT.InvoiceDetail
           dataType: 'json'
           success: (json) -> $('.pricing-table.status .bullet-item').text(json.status)
 
+    $('.download-pdf').on 'click', (event) ->
+      event.preventDefault()
+
+      $('#templates-dialog').html("<div class='row'><div class='small-12.column><h3 class='subheader'>Select a Template</h3></div></div><a href='#{@href}?template=template1'><img src='<%= asset_path('template1.png') %>'></img></a><a href='#{@href}?template=template2'><img src='<%= asset_path('template2.png') %>'></img></a>").foundation('reveal', 'open')

@@ -22,5 +22,5 @@
 
 .small-text-center.medium-text-right
   = link_to 'Edit', [:edit, @invoice], class: 'button'
-  = link_to 'PDF', [:download, @invoice], class: 'button'
+  = link_to 'Download PDF', [:download, @invoice], class: 'button download-pdf'
   = link_to 'Delete', @invoice, method: :delete, class: 'button alert', data: { confirm: t('invoices.delete_confirmation') }

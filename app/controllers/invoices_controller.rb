@@ -34,13 +34,15 @@ class InvoicesController < ApplicationController
   end
 
   def download
+    template = params[:template].match(/template[1-3]/) ? params[:template] : 'template1'
+
     render pdf: @invoice.number.to_s,
            disposition: 'attachment',
            page_height: 1123,
            dpi: 300,
            margin: { bottom: 0 },
            show_as_html: params[:preview],
-           template: 'invoices/template1'
+           template: "invoices/#{template}"
   end
 
   def cycle_status
