@@ -112,7 +112,7 @@ describe InvoicesController do
 
     let!(:invoice) { create(:invoice, project: project, user: user) }
 
-    before { get :download, id: invoice.id, preview: true }
+    before { get :download, id: invoice.id, preview: true, template: 'template1' }
 
     it { expect(response.body).to match("<h1>INVOICE #{invoice.number}</h1>") }
   end
