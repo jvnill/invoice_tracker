@@ -17,12 +17,9 @@ class Invoice < ActiveRecord::Base
   validates :invoice_items, presence: true
 
   before_validation :set_as_new_invoice
+  before_save :calculate_invoice_total
 
   scope :ordered_by_id, -> { order('invoices.id DESC') }
-
-  def total_amount
-    invoice_items.sum('quantity * unit_amount')
-  end
 
   def currency
     read_attribute(:currency).presence || '$'
@@ -40,5 +37,9 @@ class Invoice < ActiveRecord::Base
 
   def set_as_new_invoice
     self.status ||= 'new'
+  end
+
+  def calculate_invoice_total
+    self.total_amount = invoice_items.sum('quantity * unit_amount')
   end
 end

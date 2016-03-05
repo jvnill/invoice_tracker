@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124164954) do
+ActiveRecord::Schema.define(version: 20160305173049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authentications", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "provider"
+    t.string   "uid",        limit: 255
+    t.string   "provider",   limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20150124164954) do
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
-    t.string   "name"
-    t.string   "contact_person"
-    t.string   "address"
-    t.string   "contact_number"
+    t.string   "name",           limit: 255
+    t.string   "contact_person", limit: 255
+    t.string   "address",        limit: 255
+    t.string   "contact_number", limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20150124164954) do
 
   create_table "invoice_items", force: :cascade do |t|
     t.integer  "invoice_id"
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.decimal  "unit_amount"
-    t.decimal  "quantity",    precision: 10, scale: 2
+    t.decimal  "quantity",                precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,21 +51,22 @@ ActiveRecord::Schema.define(version: 20150124164954) do
   add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.string   "number"
+    t.string   "number",                  limit: 255
     t.date     "date"
-    t.string   "client_reference_number"
+    t.string   "client_reference_number", limit: 255
     t.integer  "project_id"
     t.date     "due_date"
     t.integer  "user_id"
-    t.string   "status"
+    t.string   "status",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "html"
     t.text     "payment_details"
-    t.string   "currency"
-    t.string   "page_size"
-    t.boolean  "no_quantity",             default: false
+    t.string   "currency",                limit: 255
+    t.string   "page_size",               limit: 255
+    t.boolean  "no_quantity",                                                  default: false
     t.integer  "payment_detail_id"
+    t.decimal  "total_amount",                        precision: 15, scale: 2
   end
 
   add_index "invoices", ["payment_detail_id"], name: "index_invoices_on_payment_detail_id", using: :btree
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150124164954) do
   add_index "payment_details", ["user_id"], name: "index_payment_details_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -93,13 +94,13 @@ ActiveRecord::Schema.define(version: 20150124164954) do
 
   create_table "user_details", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "address3"
-    t.string   "country"
-    t.string   "postal_code"
-    t.string   "contact_number"
+    t.string   "name",           limit: 255
+    t.string   "address1",       limit: 255
+    t.string   "address2",       limit: 255
+    t.string   "address3",       limit: 255
+    t.string   "country",        limit: 255
+    t.string   "postal_code",    limit: 255
+    t.string   "contact_number", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,9 +109,9 @@ ActiveRecord::Schema.define(version: 20150124164954) do
 
   create_table "user_options", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.string   "value"
-    t.string   "datatype"
+    t.string   "name",       limit: 255
+    t.string   "value",      limit: 255
+    t.string   "datatype",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -118,11 +119,11 @@ ActiveRecord::Schema.define(version: 20150124164954) do
   add_index "user_options", ["user_id"], name: "index_user_options_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "auth_token"
+    t.string   "auth_token",      limit: 255
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", using: :btree
