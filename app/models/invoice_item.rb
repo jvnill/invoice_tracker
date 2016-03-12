@@ -1,5 +1,5 @@
 class InvoiceItem < ActiveRecord::Base
-  belongs_to :invoice, inverse_of: :invoice_items
+  belongs_to :invoice, inverse_of: :invoice_items, touch: true
 
   validates :name, :unit_amount, :quantity, presence: true
 

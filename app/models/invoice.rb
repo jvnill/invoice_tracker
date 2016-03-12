@@ -17,7 +17,6 @@ class Invoice < ActiveRecord::Base
   validates :invoice_items, presence: true
 
   before_validation :set_as_new_invoice
-  before_save :calculate_invoice_total
 
   scope :ordered_by_id, -> { order('invoices.id DESC') }
 
@@ -33,13 +32,13 @@ class Invoice < ActiveRecord::Base
     STATUSES[(STATUSES.index(status) + 1) % 4]
   end
 
+  def calculate_invoice_total
+    self.total_amount = invoice_items.sum('quantity * unit_amount')
+  end
+
   private
 
   def set_as_new_invoice
     self.status ||= 'new'
-  end
-
-  def calculate_invoice_total
-    self.total_amount = invoice_items.sum('quantity * unit_amount')
   end
 end

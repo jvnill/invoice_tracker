@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    @invoice.calculate_invoice_total
     @invoice.save
   end
 
@@ -25,7 +26,10 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    @invoice.update_attributes(invoice_params)
+    if @invoice.update_attributes(invoice_params)
+      @invoice.calculate_invoice_total
+      @invoice.save!
+    end
   end
 
   def destroy
