@@ -4,6 +4,10 @@ class SIT.Invoice
     @defaultScripts()
 
   initBindings : ->
+    $('#filter_status').on 'change', ->
+      $.ajax
+        data: { filter: { status: @value } }
+
     $('.new-invoice-item-link').on 'click', (event) ->
       event.preventDefault()
 

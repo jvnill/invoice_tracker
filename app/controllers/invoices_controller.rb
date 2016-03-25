@@ -7,7 +7,11 @@ class InvoicesController < ApplicationController
   before_action :set_invoice_item_quantity, only: %i[create update]
 
   def index
-    @invoices = @invoices.includes(project: :client).ordered_by_id.page(params[:page])
+    @invoices = @invoices
+      .includes(project: :client)
+      .ordered_by_id
+      .page(params[:page])
+      .filter(params[:filter])
   end
 
   def new

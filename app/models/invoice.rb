@@ -20,6 +20,20 @@ class Invoice < ActiveRecord::Base
 
   scope :ordered_by_id, -> { order('invoices.id DESC') }
 
+  def self.filter(params)
+    return all if params.blank?
+
+    params.inject(all) do |current_scope, (key, value)|
+      if value.blank?
+        current_scope
+      else
+        case key.to_s
+        when 'status' then current_scope.where(status: value.downcase)
+        end
+      end
+    end
+  end
+
   def currency
     read_attribute(:currency).presence || '$'
   end
