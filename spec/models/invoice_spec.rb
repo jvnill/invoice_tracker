@@ -29,7 +29,10 @@ describe Invoice do
     let!(:invoice) { create(:invoice) }
     let!(:invoice_item) { create(:invoice_item, invoice: invoice, quantity: 1.5, unit_amount: 10) }
 
-    before { invoice.save }
+    before do
+      invoice.save
+      invoice.calculate_invoice_total!
+    end
 
     it { expect(invoice.total_amount).to eql(25) }
   end
