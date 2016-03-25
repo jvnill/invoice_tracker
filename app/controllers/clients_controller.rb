@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
 
   def show
     @projects = @client.projects
-    @invoices = @client.invoices.includes(project: :client).ordered_by_id
+    @invoices = @client.invoices.includes(project: :client).ordered_by_id.page(params[:page])
   end
 
   def update
