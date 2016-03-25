@@ -46,8 +46,9 @@ class Invoice < ActiveRecord::Base
     STATUSES[(STATUSES.index(status) + 1) % 4]
   end
 
-  def calculate_invoice_total
+  def calculate_invoice_total!
     self.total_amount = invoice_items.sum('quantity * unit_amount')
+    save!
   end
 
   private

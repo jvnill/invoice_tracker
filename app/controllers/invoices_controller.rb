@@ -19,8 +19,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice.calculate_invoice_total
-    @invoice.save
+    @invoice.calculate_invoice_total! if @invoice.save
   end
 
   def show
@@ -31,8 +30,7 @@ class InvoicesController < ApplicationController
 
   def update
     if @invoice.update_attributes(invoice_params)
-      @invoice.calculate_invoice_total
-      @invoice.save!
+      @invoice.calculate_invoice_total!
     end
   end
 
